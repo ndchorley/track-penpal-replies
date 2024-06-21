@@ -1,22 +1,21 @@
 package com.xyphias.trackpenpalreplies.functional;
 
 import com.xyphias.trackpenpalreplies.TrackPenpalReplies;
+import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.List;
 
 public class TrackPenpalRepliesTests {
     @Test
-    public void it_displays_a_message() {
+    public void it_displays_a_message_when_no_penpals_need_a_reply() {
+        List<String> commands = List.of("L", "Q");
+        FakeInputReader inputReader = new FakeInputReader(commands);
         FakeOutputWriter outputWriter = new FakeOutputWriter();
-        TrackPenpalReplies app = new TrackPenpalReplies(outputWriter);
+        TrackPenpalReplies app = new TrackPenpalReplies(inputReader, outputWriter);
 
         app.run();
 
-        assertThat(outputWriter.written).isEqualTo(
-                """
-                        Tracking penpal replies
-                        """
-        );
+        Approvals.verify(outputWriter.written);
     }
 }
