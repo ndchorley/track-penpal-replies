@@ -9,4 +9,9 @@ public class FakeOutputWriter implements OutputWriter {
     public void writeLine(String line) {
         written += line + System.lineSeparator();
     }
+
+    @Override
+    public void write(String string) {
+        written += string;
+    }
 }

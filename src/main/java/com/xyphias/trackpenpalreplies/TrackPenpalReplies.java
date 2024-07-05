@@ -11,10 +11,12 @@ public class TrackPenpalReplies {
 
     public void run() {
         while (true) {
-            outputWriter.writeLine("enter command: ");
+            outputWriter.write("enter command: ");
 
             String command = inputReader.readLine();
 
+            outputWriter.writeLine("");
+            
             if (command.equals("L")) {
                 outputWriter.writeLine("No penpals need a reply");
             } else {
