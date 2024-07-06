@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TrackPenpalRepliesTests {
     @Test
-    public void it_displays_a_message_when_no_penpals_need_a_reply() {
+    public void it_displays_a_message_when_no_letters_need_a_reply() {
         List<String> commands = List.of("L", "Q");
         FakeInputReader inputReader = new FakeInputReader(commands);
         FakeOutputWriter outputWriter = new FakeOutputWriter();

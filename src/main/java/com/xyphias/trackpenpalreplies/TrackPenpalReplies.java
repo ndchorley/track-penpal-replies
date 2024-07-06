@@ -23,7 +23,7 @@ public class TrackPenpalReplies {
             outputWriter.writeLine("");
             
             switch (command) {
-                case ListPenpals _ -> outputWriter.writeLine("No penpals need a reply");
+                case ListLetters _ -> outputWriter.writeLine("No letters need a reply");
                 case Quit _ ->  running = false; 
                 default -> throw new IllegalStateException("Unexpected value: " + command);
             }
