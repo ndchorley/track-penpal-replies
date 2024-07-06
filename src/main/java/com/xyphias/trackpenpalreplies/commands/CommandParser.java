@@ -1,4 +1,4 @@
-package com.xyphias.trackpenpalreplies;
+package com.xyphias.trackpenpalreplies.commands;
 
 public class CommandParser {
     public static Command parse(String command) {

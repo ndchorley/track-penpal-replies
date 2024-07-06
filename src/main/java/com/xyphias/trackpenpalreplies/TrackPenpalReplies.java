@@ -1,5 +1,6 @@
 package com.xyphias.trackpenpalreplies;
 
+import com.xyphias.trackpenpalreplies.commands.*;
 import com.xyphias.trackpenpalreplies.io.*;
 
 public class TrackPenpalReplies {
