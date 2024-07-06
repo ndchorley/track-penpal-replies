@@ -1,5 +1,7 @@
 package com.xyphias.trackpenpalreplies;
 
+import com.xyphias.trackpenpalreplies.io.*;
+
 public class TrackPenpalReplies {
     private final InputReader inputReader;
     private final OutputWriter outputWriter;

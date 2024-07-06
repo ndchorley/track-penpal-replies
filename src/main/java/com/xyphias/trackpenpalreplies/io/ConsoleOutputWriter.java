@@ -1,4 +1,4 @@
-package com.xyphias.trackpenpalreplies;
+package com.xyphias.trackpenpalreplies.io;
 
 public class ConsoleOutputWriter implements OutputWriter {
     @Override

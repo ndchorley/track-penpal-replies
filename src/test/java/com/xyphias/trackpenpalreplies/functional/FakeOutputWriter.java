@@ -1,6 +1,6 @@
 package com.xyphias.trackpenpalreplies.functional;
 
-import com.xyphias.trackpenpalreplies.OutputWriter;
+import com.xyphias.trackpenpalreplies.io.OutputWriter;
 
 public class FakeOutputWriter implements OutputWriter {
     public String written = "";

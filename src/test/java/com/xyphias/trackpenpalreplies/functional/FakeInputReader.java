@@ -1,6 +1,6 @@
 package com.xyphias.trackpenpalreplies.functional;
 
-import com.xyphias.trackpenpalreplies.InputReader;
+import com.xyphias.trackpenpalreplies.io.InputReader;
 
 import java.util.ArrayList;
 import java.util.List;
