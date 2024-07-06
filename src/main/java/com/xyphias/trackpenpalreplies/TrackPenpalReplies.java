@@ -18,10 +18,8 @@ public class TrackPenpalReplies {
         boolean running = true;
         
         while (running) {
-            outputWriter.write("enter command: ");
+            Command command = readCommand();
 
-            Command command = parse(inputReader.readLine());
-            
             outputWriter.writeLine("");
             
             switch (command) {
@@ -30,5 +28,15 @@ public class TrackPenpalReplies {
                 default -> throw new IllegalStateException("Unexpected value: " + command);
             }
         }
+    }
+
+    private Command readCommand() {
+        outputWriter.write("enter command: ");
+
+        String input = inputReader.readLine();
+        
+        Command command = parse(input);
+        
+        return command;
     }
 }
