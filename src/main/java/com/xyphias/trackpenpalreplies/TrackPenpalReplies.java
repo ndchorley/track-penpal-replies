@@ -10,17 +10,19 @@ public class TrackPenpalReplies {
     }
 
     public void run() {
-        while (true) {
+        boolean running = true;
+        
+        while (running) {
             outputWriter.write("enter command: ");
 
-            String command = inputReader.readLine();
-
+            Command command = CommandParser.parse(inputReader.readLine());
+            
             outputWriter.writeLine("");
             
-            if (command.equals("L")) {
-                outputWriter.writeLine("No penpals need a reply");
-            } else {
-                break;
+            switch (command) {
+                case ListPenpals _ -> outputWriter.writeLine("No penpals need a reply");
+                case Quit _ ->  running = false; 
+                default -> throw new IllegalStateException("Unexpected value: " + command);
             }
         }
     }
