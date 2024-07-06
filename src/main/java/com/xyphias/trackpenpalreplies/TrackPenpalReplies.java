@@ -3,6 +3,8 @@ package com.xyphias.trackpenpalreplies;
 import com.xyphias.trackpenpalreplies.commands.*;
 import com.xyphias.trackpenpalreplies.io.*;
 
+import static com.xyphias.trackpenpalreplies.commands.Parsing.*;
+
 public class TrackPenpalReplies {
     private final InputReader inputReader;
     private final OutputWriter outputWriter;
@@ -18,7 +20,7 @@ public class TrackPenpalReplies {
         while (running) {
             outputWriter.write("enter command: ");
 
-            Command command = CommandParser.parse(inputReader.readLine());
+            Command command = parse(inputReader.readLine());
             
             outputWriter.writeLine("");
             

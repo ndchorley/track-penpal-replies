@@ -1,6 +1,6 @@
 package com.xyphias.trackpenpalreplies.commands;
 
-public class CommandParser {
+public class Parsing {
     public static Command parse(String command) {
         if (command.equals("L")) return new ListPenpals();
         
