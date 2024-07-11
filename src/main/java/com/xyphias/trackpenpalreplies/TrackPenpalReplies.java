@@ -25,7 +25,6 @@ public class TrackPenpalReplies {
             switch (command) {
                 case ListLetters _ -> outputWriter.writeLine("No letters need a reply");
                 case Quit _ ->  running = false; 
-                default -> throw new IllegalStateException("Unexpected value: " + command);
             }
         }
     }
