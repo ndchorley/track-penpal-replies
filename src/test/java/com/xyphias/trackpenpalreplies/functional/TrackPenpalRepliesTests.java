@@ -18,4 +18,16 @@ public class TrackPenpalRepliesTests {
 
         Approvals.verify(outputWriter.written);
     }
+    
+    @Test
+    public void it_displays_the_details_of_a_letter() {
+        List<String> commands = List.of("A Amandine;04/07/2024", "L", "Q");
+        FakeInputReader inputReader = new FakeInputReader(commands);
+        FakeOutputWriter outputWriter = new FakeOutputWriter();
+        TrackPenpalReplies app = new TrackPenpalReplies(inputReader, outputWriter);
+        
+        app.run();
+        
+        Approvals.verify(outputWriter.written);
+    }
 }

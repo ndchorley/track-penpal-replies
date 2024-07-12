@@ -3,6 +3,9 @@ package com.xyphias.trackpenpalreplies;
 import com.xyphias.trackpenpalreplies.commands.*;
 import com.xyphias.trackpenpalreplies.io.*;
 
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
 import static com.xyphias.trackpenpalreplies.commands.Parsing.*;
 
 public class TrackPenpalReplies {
@@ -23,8 +26,21 @@ public class TrackPenpalReplies {
             outputWriter.writeLine("");
             
             switch (command) {
-                case ListLetters _ -> outputWriter.writeLine("No letters need a reply");
-                case Quit _ ->  running = false; 
+                case ListLetters _ -> {
+                    if (letterbox.isEmpty()) 
+                        outputWriter.writeLine("No letters need a reply");
+                    else {
+                        Letter letter = letterbox.getFirst();
+                        
+                        outputWriter.writeLine(
+                                letter.from().name() + ", " + letter.receivedOn().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+                        );
+                    }
+                }
+                
+                case AddLetter addLetter -> letterbox.add(addLetter.letter());
+
+                case Quit _ ->  running = false;
             }
         }
     }
@@ -38,4 +54,6 @@ public class TrackPenpalReplies {
         
         return command;
     }
+    
+    private final ArrayList<Letter> letterbox = new ArrayList<>();
 }
