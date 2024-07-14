@@ -11,5 +11,6 @@ public abstract class LetterBoxContract {
     @Test
     public void a_new_letter_box_is_empty() {
         assertThat(letterBox.isEmpty()).isTrue();
+        assertThat(letterBox.contents().isEmpty()).isTrue();
     }
 }
