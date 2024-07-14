@@ -29,5 +29,6 @@ public abstract class LetterBoxContract {
         letterBox.add(letter);
 
         assertThat(letterBox.contents().getFirst()).isEqualTo(letter);
+        assertThat(letterBox.isEmpty()).isFalse();
     }
 }
