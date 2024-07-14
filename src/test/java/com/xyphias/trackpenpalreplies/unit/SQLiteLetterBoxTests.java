@@ -2,10 +2,13 @@ package com.xyphias.trackpenpalreplies.unit;
 
 import com.xyphias.trackpenpalreplies.SQLiteLetterBox;
 import org.flywaydb.core.Flyway;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.BeforeEach;
+import org.sqlite.SQLiteDataSource;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class SQLiteLetterBoxTests extends LetterBoxContract {
     private final String dBFile;
@@ -18,7 +21,16 @@ public class SQLiteLetterBoxTests extends LetterBoxContract {
         
         this.letterBox = new SQLiteLetterBox(dBFile);
     }
+    
+    @BeforeEach
+    public void emptyDatabase() {
+        SQLiteDataSource dataSource = new SQLiteDataSource();
+        dataSource.setUrl("jdbc:sqlite:" + dBFile);
 
-    @Disabled
-    public void it_stores_a_letter_that_is_added() {}
+        try (Connection connection = dataSource.getConnection()) {
+            connection.prepareStatement("DELETE FROM Letters;").execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
