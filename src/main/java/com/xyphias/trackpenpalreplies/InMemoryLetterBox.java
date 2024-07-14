@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class InMemoryLetterBox implements LetterBox {
-    public InMemoryLetterBox() {}
-
     @Override
     public boolean isEmpty() { return letters.isEmpty(); }
 
