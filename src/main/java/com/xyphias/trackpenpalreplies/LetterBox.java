@@ -1,21 +1,11 @@
 package com.xyphias.trackpenpalreplies;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class LetterBox {
-    public LetterBox() {}
+public interface LetterBox {
+    boolean isEmpty();
 
-    public boolean isEmpty() { return letters.isEmpty(); }
+    List<Letter> contents();
 
-    public List<Letter> contents() {
-        return Collections.unmodifiableList(letters);
-    }
-
-    public void add(Letter letter) {
-        letters.add(letter);
-    }
-
-    private final ArrayList<Letter> letters = new ArrayList<>();
+    void add(Letter letter);
 }

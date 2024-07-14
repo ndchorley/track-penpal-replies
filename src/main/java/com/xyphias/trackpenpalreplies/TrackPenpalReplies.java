@@ -10,7 +10,7 @@ import static com.xyphias.trackpenpalreplies.commands.Parsing.*;
 public class TrackPenpalReplies {
     private final InputReader inputReader;
     private final OutputWriter outputWriter;
-    private final LetterBox letterBox = new LetterBox();
+    private final LetterBox letterBox = new InMemoryLetterBox();
 
     public TrackPenpalReplies(InputReader inputReader, OutputWriter outputWriter) {
         this.inputReader = inputReader;
