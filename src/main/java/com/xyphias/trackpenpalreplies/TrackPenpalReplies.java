@@ -1,20 +1,27 @@
 package com.xyphias.trackpenpalreplies;
 
-import com.xyphias.trackpenpalreplies.commands.*;
-import com.xyphias.trackpenpalreplies.io.*;
+import com.xyphias.trackpenpalreplies.commands.AddLetter;
+import com.xyphias.trackpenpalreplies.commands.Command;
+import com.xyphias.trackpenpalreplies.commands.ListLetters;
+import com.xyphias.trackpenpalreplies.commands.Quit;
+import com.xyphias.trackpenpalreplies.io.InputReader;
+import com.xyphias.trackpenpalreplies.io.OutputWriter;
 
 import java.time.format.DateTimeFormatter;
 
-import static com.xyphias.trackpenpalreplies.commands.Parsing.*;
+import static com.xyphias.trackpenpalreplies.commands.Parsing.parse;
 
 public class TrackPenpalReplies {
     private final InputReader inputReader;
     private final OutputWriter outputWriter;
-    private final LetterBox letterBox = new InMemoryLetterBox();
+    private final LetterBox letterBox;
 
-    public TrackPenpalReplies(InputReader inputReader, OutputWriter outputWriter) {
+    public TrackPenpalReplies(
+            LetterBox letterBox, InputReader inputReader, OutputWriter outputWriter
+    ) {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
+        this.letterBox = letterBox;
     }
 
     public void run() {

@@ -1,5 +1,6 @@
 package com.xyphias.trackpenpalreplies.functional;
 
+import com.xyphias.trackpenpalreplies.InMemoryLetterBox;
 import com.xyphias.trackpenpalreplies.TrackPenpalReplies;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,8 @@ public class TrackPenpalRepliesTests {
         List<String> commands = List.of("L", "Q");
         FakeInputReader inputReader = new FakeInputReader(commands);
         FakeOutputWriter outputWriter = new FakeOutputWriter();
-        TrackPenpalReplies app = new TrackPenpalReplies(inputReader, outputWriter);
+        TrackPenpalReplies app = 
+                new TrackPenpalReplies(new InMemoryLetterBox(), inputReader, outputWriter);
 
         app.run();
 
@@ -24,7 +26,7 @@ public class TrackPenpalRepliesTests {
         List<String> commands = List.of("A Amandine;04/07/2024", "L", "Q");
         FakeInputReader inputReader = new FakeInputReader(commands);
         FakeOutputWriter outputWriter = new FakeOutputWriter();
-        TrackPenpalReplies app = new TrackPenpalReplies(inputReader, outputWriter);
+        TrackPenpalReplies app = new TrackPenpalReplies(new InMemoryLetterBox(), inputReader, outputWriter);
         
         app.run();
         

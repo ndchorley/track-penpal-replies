@@ -1,6 +1,7 @@
 package com.xyphias.trackpenpalreplies;
 
-import com.xyphias.trackpenpalreplies.io.*;
+import com.xyphias.trackpenpalreplies.io.ConsoleOutputWriter;
+import com.xyphias.trackpenpalreplies.io.OutputWriter;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,6 +9,7 @@ public class Main {
         
         TrackPenpalReplies app =
                 new TrackPenpalReplies(
+                        new InMemoryLetterBox(),
                         System.console()::readLine,
                         consoleOutputWriter
                 );
