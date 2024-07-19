@@ -45,7 +45,7 @@ public class TrackPenpalReplies {
                     }
                 }
                 
-                case AddLetter addLetter -> letterBox.add(addLetter.letter());
+                case AddLetter addLetterCommand -> letterBox.add(addLetterCommand.letter());
 
                 case Quit _ ->  running = false;
             }
