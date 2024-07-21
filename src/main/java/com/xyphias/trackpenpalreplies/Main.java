@@ -3,8 +3,12 @@ package com.xyphias.trackpenpalreplies;
 import com.xyphias.trackpenpalreplies.io.ConsoleOutputWriter;
 import org.flywaydb.core.Flyway;
 
+import java.util.logging.*;
+
 public class Main {
     public static void main(String[] args) {
+        setUpLoggingToFile();
+
         LetterBox letterBox = 
                 createSQLiteLetterBox(
                         System.getenv("HOME") + "/penpal_letterbox.db"
@@ -18,6 +22,23 @@ public class Main {
                 );
 
         app.run();
+    }
+
+    private static void setUpLoggingToFile() {
+        Logger rootLogger = LogManager.getLogManager().getLogger("");
+        
+        Handler consoleHandler = rootLogger.getHandlers()[0];
+        rootLogger.removeHandler(consoleHandler);
+        
+        try {
+            Handler fileHandler = 
+                    new FileHandler("track-penpal-replies.log", true);
+            fileHandler.setFormatter(new SimpleFormatter());
+            
+            rootLogger.addHandler(fileHandler);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static LetterBox createSQLiteLetterBox(String dbFile) {
