@@ -4,8 +4,8 @@ import com.xyphias.trackpenpalreplies.commands.AddLetter;
 import com.xyphias.trackpenpalreplies.commands.Command;
 import com.xyphias.trackpenpalreplies.commands.ListLetters;
 import com.xyphias.trackpenpalreplies.commands.Quit;
-import com.xyphias.trackpenpalreplies.io.InputReader;
-import com.xyphias.trackpenpalreplies.io.OutputWriter;
+import com.xyphias.trackpenpalreplies.infrastructure.io.InputReader;
+import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
 import java.time.format.DateTimeFormatter;
 

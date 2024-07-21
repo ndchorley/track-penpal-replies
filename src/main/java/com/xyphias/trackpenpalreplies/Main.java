@@ -1,6 +1,6 @@
 package com.xyphias.trackpenpalreplies;
 
-import com.xyphias.trackpenpalreplies.io.ConsoleOutputWriter;
+import com.xyphias.trackpenpalreplies.infrastructure.io.ConsoleOutputWriter;
 import org.flywaydb.core.Flyway;
 
 import java.util.logging.*;
