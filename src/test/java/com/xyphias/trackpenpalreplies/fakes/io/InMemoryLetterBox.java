@@ -1,4 +1,7 @@
-package com.xyphias.trackpenpalreplies;
+package com.xyphias.trackpenpalreplies.fakes.io;
+
+import com.xyphias.trackpenpalreplies.Letter;
+import com.xyphias.trackpenpalreplies.LetterBox;
 
 import java.util.ArrayList;
 import java.util.Collections;

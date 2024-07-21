@@ -1,6 +1,6 @@
 package com.xyphias.trackpenpalreplies.unit;
 
-import com.xyphias.trackpenpalreplies.InMemoryLetterBox;
+import com.xyphias.trackpenpalreplies.fakes.io.InMemoryLetterBox;
 
 public class InMemoryLetterBoxTests extends LetterBoxContract {
     public InMemoryLetterBoxTests() {
