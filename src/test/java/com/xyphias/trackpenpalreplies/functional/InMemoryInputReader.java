@@ -5,10 +5,10 @@ import com.xyphias.trackpenpalreplies.infrastructure.io.InputReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FakeInputReader implements InputReader {
+public class InMemoryInputReader implements InputReader {
     private final ArrayList<String> commands;
     
-    public FakeInputReader(List<String> commands) {
+    public InMemoryInputReader(List<String> commands) {
         this.commands = new ArrayList<>(commands);
     }
 
