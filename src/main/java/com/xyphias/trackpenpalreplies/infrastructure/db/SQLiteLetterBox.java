@@ -1,5 +1,8 @@
-package com.xyphias.trackpenpalreplies;
+package com.xyphias.trackpenpalreplies.infrastructure.db;
 
+import com.xyphias.trackpenpalreplies.Letter;
+import com.xyphias.trackpenpalreplies.LetterBox;
+import com.xyphias.trackpenpalreplies.Penpal;
 import org.sqlite.SQLiteDataSource;
 
 import java.sql.Connection;

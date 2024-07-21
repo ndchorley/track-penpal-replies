@@ -1,5 +1,6 @@
 package com.xyphias.trackpenpalreplies;
 
+import com.xyphias.trackpenpalreplies.infrastructure.db.SQLiteLetterBox;
 import com.xyphias.trackpenpalreplies.infrastructure.io.ConsoleOutputWriter;
 import org.flywaydb.core.Flyway;
 
