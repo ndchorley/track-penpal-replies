@@ -1,4 +1,4 @@
-package com.xyphias.trackpenpalreplies.functional;
+package com.xyphias.trackpenpalreplies.fakes.io;
 
 import com.xyphias.trackpenpalreplies.infrastructure.io.InputReader;
 

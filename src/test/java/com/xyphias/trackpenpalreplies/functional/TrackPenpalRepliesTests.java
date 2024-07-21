@@ -2,6 +2,8 @@ package com.xyphias.trackpenpalreplies.functional;
 
 import com.xyphias.trackpenpalreplies.InMemoryLetterBox;
 import com.xyphias.trackpenpalreplies.TrackPenpalReplies;
+import com.xyphias.trackpenpalreplies.fakes.io.CapturingOutputWriter;
+import com.xyphias.trackpenpalreplies.fakes.io.InMemoryInputReader;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
 
