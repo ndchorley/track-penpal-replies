@@ -14,7 +14,7 @@ public class Parsing {
         
         else if (input.startsWith("A")) {
             Matcher matcher = 
-                    Pattern.compile("A (\\w+);(\\d{2}/\\d{2}/\\d{4})")
+                    Pattern.compile("A ([\\w ]+);(\\d{2}/\\d{2}/\\d{4})")
                             .matcher(input);
             matcher.matches();
             
