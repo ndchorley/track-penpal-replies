@@ -2,7 +2,7 @@ package com.xyphias.trackpenpalreplies.functional;
 
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
-public class FakeOutputWriter implements OutputWriter {
+public class CapturingOutputWriter implements OutputWriter {
     public String written = "";
 
     @Override
