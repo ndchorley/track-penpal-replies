@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InMemoryInputReader implements InputReader {
-    private final ArrayList<String> commands;
+    private final ArrayList<String> inputs;
     
-    public InMemoryInputReader(List<String> commands) {
-        this.commands = new ArrayList<>(commands);
+    public InMemoryInputReader(List<String> inputs) {
+        this.inputs = new ArrayList<>(inputs);
     }
 
     @Override
     public String readLine() {
-        return commands.removeFirst();
+        return inputs.removeFirst();
     }
 }
