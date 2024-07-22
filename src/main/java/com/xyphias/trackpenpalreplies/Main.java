@@ -28,6 +28,8 @@ public class Main {
     private static void setUpLoggingToFile() {
         Logger rootLogger = LogManager.getLogManager().getLogger("");
         
+        rootLogger.setLevel(Level.WARNING);
+        
         Handler consoleHandler = rootLogger.getHandlers()[0];
         rootLogger.removeHandler(consoleHandler);
         
