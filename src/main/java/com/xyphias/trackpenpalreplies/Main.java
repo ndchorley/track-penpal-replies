@@ -10,11 +10,14 @@ public class Main {
     public static void main(String[] args) {
         setUpLoggingToFile();
 
-        LetterBox letterBox = 
-                createSQLiteLetterBox(
+        String dbFile =
+                System.getenv().getOrDefault(
+                        "PENPAL_REPLY_TRACKER_DB_FILE",
                         System.getenv("HOME") + "/penpal_letterbox.db"
                 );
-        
+
+        LetterBox letterBox = createSQLiteLetterBox(dbFile);
+
         TrackPenpalReplies app =
                 new TrackPenpalReplies(
                         letterBox,
