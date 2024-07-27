@@ -19,7 +19,7 @@ public abstract class LetterBoxContract {
     }
 
     @Test
-    public void it_stores_a_letter_that_is_added() {
+    public void a_letter_that_has_been_added_can_be_retrieved() {
         Letter letter =
                 new Letter(
                         new Penpal("Dmitry"),
