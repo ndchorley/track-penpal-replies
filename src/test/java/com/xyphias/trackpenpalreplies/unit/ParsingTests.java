@@ -14,6 +14,6 @@ public class ParsingTests {
 
        AddLetter command = (AddLetter) Parsing.parse(input, null, null);
        
-       assertThat(command.letter().from()).isEqualTo(new Penpal("Pascal G"));
+       assertThat(command.letter.from()).isEqualTo(new Penpal("Pascal G"));
     }
 }
