@@ -7,8 +7,6 @@ import com.xyphias.trackpenpalreplies.commands.Quit;
 import com.xyphias.trackpenpalreplies.infrastructure.io.InputReader;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
-import java.time.format.DateTimeFormatter;
-
 import static com.xyphias.trackpenpalreplies.commands.Parsing.parse;
 
 public class TrackPenpalReplies {
@@ -32,7 +30,8 @@ public class TrackPenpalReplies {
 
             outputWriter.writeLine("");
             
-            if (command instanceof ListLetters) executeListLetters(letterBox, outputWriter);
+            if (command instanceof ListLetters listLetters) 
+                listLetters.execute(letterBox, outputWriter);
 
             switch (command) {
                 case ListLetters _ -> {}
@@ -41,18 +40,6 @@ public class TrackPenpalReplies {
 
                 case Quit _ ->  running = false;
             }
-        }
-    }
-
-    private void executeListLetters(LetterBox letterBox, OutputWriter outputWriter) {
-        if (letterBox.isEmpty()) 
-            outputWriter.writeLine("No letters need a reply");
-        else {
-            Letter letter = letterBox.contents().getFirst();
-            
-            outputWriter.writeLine(
-                    letter.from().name() + ", " + letter.receivedOn().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
-            );
         }
     }
 
