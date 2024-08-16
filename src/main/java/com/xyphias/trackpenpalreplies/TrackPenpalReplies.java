@@ -31,7 +31,7 @@ public class TrackPenpalReplies {
             outputWriter.writeLine("");
             
             if (command instanceof ListLetters listLetters) 
-                listLetters.execute(letterBox, outputWriter);
+                listLetters.execute();
 
             switch (command) {
                 case ListLetters _ -> {}
@@ -48,7 +48,7 @@ public class TrackPenpalReplies {
 
         String input = inputReader.readLine();
         
-        Command command = parse(input);
+        Command command = parse(input, letterBox, outputWriter);
         
         return command;
     }

@@ -1,7 +1,9 @@
 package com.xyphias.trackpenpalreplies.commands;
 
 import com.xyphias.trackpenpalreplies.Letter;
+import com.xyphias.trackpenpalreplies.LetterBox;
 import com.xyphias.trackpenpalreplies.Penpal;
+import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,8 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parsing {
-    public static Command parse(String input) {
-        if (input.equals("L")) return new ListLetters();
+    public static Command parse(String input, LetterBox letterBox, OutputWriter outputWriter) {
+        if (input.equals("L")) return new ListLetters(letterBox, outputWriter);
         
         else if (input.startsWith("A")) {
             Matcher matcher = 

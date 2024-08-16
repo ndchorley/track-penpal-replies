@@ -6,8 +6,16 @@ import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
 import java.time.format.DateTimeFormatter;
 
-public record ListLetters() implements Command {
-    public void execute(LetterBox letterBox, OutputWriter outputWriter) {
+public final class ListLetters implements Command {
+    private final LetterBox letterBox;
+    private final OutputWriter outputWriter;
+
+    public ListLetters(LetterBox letterBox, OutputWriter outputWriter) {
+        this.letterBox = letterBox;
+        this.outputWriter = outputWriter;
+    }
+    
+    public void execute() {
         if (letterBox.isEmpty())
             outputWriter.writeLine("No letters need a reply");
         else {

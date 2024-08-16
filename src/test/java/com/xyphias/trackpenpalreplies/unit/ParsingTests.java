@@ -12,7 +12,7 @@ public class ParsingTests {
     public void an_add_letter_command_can_contain_spaces_in_the_name() {
         String input = "A Pascal G;03/04/2024";
 
-       AddLetter command = (AddLetter) Parsing.parse(input);
+       AddLetter command = (AddLetter) Parsing.parse(input, null, null);
        
        assertThat(command.letter().from()).isEqualTo(new Penpal("Pascal G"));
     }
