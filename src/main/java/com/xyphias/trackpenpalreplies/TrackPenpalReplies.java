@@ -36,7 +36,7 @@ public class TrackPenpalReplies {
             switch (command) {
                 case ListLetters _ -> {}
 
-                case AddLetter addLetterCommand -> addLetterCommand.execute(letterBox);
+                case AddLetter addLetterCommand -> addLetterCommand.execute();
 
                 case Quit _ ->  running = false;
             }

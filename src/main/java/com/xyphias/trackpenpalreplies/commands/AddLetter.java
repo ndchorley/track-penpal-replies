@@ -5,11 +5,14 @@ import com.xyphias.trackpenpalreplies.LetterBox;
 
 public final class AddLetter implements Command {
     public final Letter letter;
-    public AddLetter(Letter letter) {
+    private final LetterBox letterBox;
+
+    public AddLetter(Letter letter, LetterBox letterBox) {
         this.letter = letter;
+        this.letterBox = letterBox;
     }
     
-    public void execute(LetterBox letterBox) {
+    public void execute() {
         letterBox.add(letter);
     }
 }

@@ -28,7 +28,8 @@ public class Parsing {
                     );
             
             return new AddLetter(
-                    new Letter(new Penpal(name), receivedOn)
+                    new Letter(new Penpal(name), receivedOn),
+                    letterBox
             );
         }
 
