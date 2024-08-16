@@ -32,23 +32,27 @@ public class TrackPenpalReplies {
 
             outputWriter.writeLine("");
             
+            if (command instanceof ListLetters) executeListLetters(letterBox, outputWriter);
+
             switch (command) {
-                case ListLetters _ -> {
-                    if (letterBox.isEmpty()) 
-                        outputWriter.writeLine("No letters need a reply");
-                    else {
-                        Letter letter = letterBox.contents().getFirst();
-                        
-                        outputWriter.writeLine(
-                                letter.from().name() + ", " + letter.receivedOn().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
-                        );
-                    }
-                }
-                
+                case ListLetters _ -> {}
+
                 case AddLetter addLetterCommand -> letterBox.add(addLetterCommand.letter());
 
                 case Quit _ ->  running = false;
             }
+        }
+    }
+
+    private void executeListLetters(LetterBox letterBox, OutputWriter outputWriter) {
+        if (letterBox.isEmpty()) 
+            outputWriter.writeLine("No letters need a reply");
+        else {
+            Letter letter = letterBox.contents().getFirst();
+            
+            outputWriter.writeLine(
+                    letter.from().name() + ", " + letter.receivedOn().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+            );
         }
     }
 
