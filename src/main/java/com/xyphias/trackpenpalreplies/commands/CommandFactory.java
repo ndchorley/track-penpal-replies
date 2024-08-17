@@ -12,12 +12,14 @@ import java.util.regex.Pattern;
 
 public class CommandFactory {
     private LetterBox letterBox;
-    
-    public CommandFactory(LetterBox letterBox) {
+    private OutputWriter outputWriter;
+
+    public CommandFactory(LetterBox letterBox, OutputWriter outputWriter) {
         this.letterBox = letterBox;
+        this.outputWriter = outputWriter;
     }
 
-    public Command createFrom(String input, OutputWriter outputWriter) {
+    public Command createFrom(String input) {
         if (input.equals("L")) return new ListLetters(letterBox, outputWriter);
         
         else if (input.startsWith("A")) {

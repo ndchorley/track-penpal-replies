@@ -36,7 +36,7 @@ public class TrackPenpalReplies {
 
         String input = inputReader.readLine();
         
-        Command command = (new CommandFactory(letterBox)).createFrom(input, outputWriter);
+        Command command = (new CommandFactory(letterBox, outputWriter)).createFrom(input);
         
         return command;
     }
