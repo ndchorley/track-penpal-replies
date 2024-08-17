@@ -13,9 +13,9 @@ import java.util.List;
 
 public class TrackPenpalRepliesTests {
     private final InMemoryInputReader inputReader = new InMemoryInputReader();
-    private LetterBox letterBox = new InMemoryLetterBox();
-    private CapturingOutputWriter outputWriter = new CapturingOutputWriter();
-    private CommandFactory commandFactory = new CommandFactory(letterBox, outputWriter);
+    private final LetterBox letterBox = new InMemoryLetterBox();
+    private final CapturingOutputWriter outputWriter = new CapturingOutputWriter();
+    private final CommandFactory commandFactory = new CommandFactory(letterBox, outputWriter);
     private final TrackPenpalReplies app = new TrackPenpalReplies(inputReader, outputWriter, commandFactory);
 
     @Test
