@@ -26,7 +26,6 @@ public class Main {
         
         TrackPenpalReplies app =
                 new TrackPenpalReplies(
-                        letterBox,
                         System.console()::readLine,
                         outputWriter,
                         commandFactory

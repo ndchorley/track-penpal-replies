@@ -18,7 +18,7 @@ public class TrackPenpalRepliesTests {
         CapturingOutputWriter outputWriter = new CapturingOutputWriter();
         InMemoryLetterBox letterBox = new InMemoryLetterBox();
         TrackPenpalReplies app = 
-                new TrackPenpalReplies(letterBox, inputReader, outputWriter, new CommandFactory(letterBox, outputWriter));
+                new TrackPenpalReplies(inputReader, outputWriter, new CommandFactory(letterBox, outputWriter));
 
         app.run();
 
@@ -32,7 +32,7 @@ public class TrackPenpalRepliesTests {
         CapturingOutputWriter outputWriter = new CapturingOutputWriter();
         InMemoryLetterBox letterBox = new InMemoryLetterBox();
         TrackPenpalReplies app = 
-                new TrackPenpalReplies(letterBox, inputReader, outputWriter, new CommandFactory(letterBox, outputWriter));
+                new TrackPenpalReplies(inputReader, outputWriter, new CommandFactory(letterBox, outputWriter));
         
         app.run();
         

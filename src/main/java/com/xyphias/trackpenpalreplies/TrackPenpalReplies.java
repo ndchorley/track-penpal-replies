@@ -9,15 +9,13 @@ import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 public class TrackPenpalReplies {
     private final InputReader inputReader;
     private final OutputWriter outputWriter;
-    private final LetterBox letterBox;
     private final CommandFactory commandFactory;
 
     public TrackPenpalReplies(
-            LetterBox letterBox, InputReader inputReader, OutputWriter outputWriter, CommandFactory commandFactory
+            InputReader inputReader, OutputWriter outputWriter, CommandFactory commandFactory
     ) {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
-        this.letterBox = letterBox;
         this.commandFactory = commandFactory;
     }
 
