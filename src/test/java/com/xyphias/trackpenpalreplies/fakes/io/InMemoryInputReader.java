@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InMemoryInputReader implements InputReader {
-    private final ArrayList<String> inputs;
+    private ArrayList<String> inputs;
     
-    public InMemoryInputReader(List<String> inputs) {
+    public void withInputs(List<String> inputs) {
         this.inputs = new ArrayList<>(inputs);
     }
 

@@ -19,7 +19,8 @@ public class TrackPenpalRepliesTests {
     @Test
     public void it_displays_a_message_when_no_letters_need_a_reply() {
         List<String> commands = List.of("L", "Q");
-        InMemoryInputReader inputReader = new InMemoryInputReader(commands);
+        InMemoryInputReader inputReader = new InMemoryInputReader();
+        inputReader.withInputs(commands);
         TrackPenpalReplies app =
                 new TrackPenpalReplies(inputReader, outputWriter, commandFactory);
 
@@ -31,7 +32,8 @@ public class TrackPenpalRepliesTests {
     @Test
     public void it_displays_the_details_of_a_letter() {
         List<String> commands = List.of("A Amandine;04/07/2024", "L", "Q");
-        InMemoryInputReader inputReader = new InMemoryInputReader(commands);
+        InMemoryInputReader inputReader = new InMemoryInputReader();
+        inputReader.withInputs(commands);
         TrackPenpalReplies app =
                 new TrackPenpalReplies(inputReader, outputWriter, commandFactory);
 
