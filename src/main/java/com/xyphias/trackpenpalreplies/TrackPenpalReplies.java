@@ -1,11 +1,10 @@
 package com.xyphias.trackpenpalreplies;
 
 import com.xyphias.trackpenpalreplies.commands.Command;
+import com.xyphias.trackpenpalreplies.commands.CommandFactory;
 import com.xyphias.trackpenpalreplies.commands.Quit;
 import com.xyphias.trackpenpalreplies.infrastructure.io.InputReader;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
-
-import static com.xyphias.trackpenpalreplies.commands.Parsing.parse;
 
 public class TrackPenpalReplies {
     private final InputReader inputReader;
@@ -37,7 +36,7 @@ public class TrackPenpalReplies {
 
         String input = inputReader.readLine();
         
-        Command command = parse(input, letterBox, outputWriter);
+        Command command = (new CommandFactory()).createFrom(input, letterBox, outputWriter);
         
         return command;
     }

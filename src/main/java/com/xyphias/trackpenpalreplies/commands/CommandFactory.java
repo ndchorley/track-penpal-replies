@@ -10,8 +10,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parsing {
-    public static Command parse(String input, LetterBox letterBox, OutputWriter outputWriter) {
+public class CommandFactory {
+    public Command createFrom(String input, LetterBox letterBox, OutputWriter outputWriter) {
         if (input.equals("L")) return new ListLetters(letterBox, outputWriter);
         
         else if (input.startsWith("A")) {
