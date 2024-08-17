@@ -11,7 +11,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CommandFactory {
-    public Command createFrom(String input, LetterBox letterBox, OutputWriter outputWriter) {
+    private LetterBox letterBox;
+    
+    public CommandFactory(LetterBox letterBox) {
+        this.letterBox = letterBox;
+    }
+
+    public Command createFrom(String input, OutputWriter outputWriter) {
         if (input.equals("L")) return new ListLetters(letterBox, outputWriter);
         
         else if (input.startsWith("A")) {
