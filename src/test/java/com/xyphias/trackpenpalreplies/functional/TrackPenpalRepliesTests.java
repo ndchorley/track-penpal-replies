@@ -1,6 +1,7 @@
 package com.xyphias.trackpenpalreplies.functional;
 
 import com.xyphias.trackpenpalreplies.TrackPenpalReplies;
+import com.xyphias.trackpenpalreplies.commands.CommandFactory;
 import com.xyphias.trackpenpalreplies.fakes.io.CapturingOutputWriter;
 import com.xyphias.trackpenpalreplies.fakes.io.InMemoryInputReader;
 import com.xyphias.trackpenpalreplies.fakes.io.InMemoryLetterBox;
@@ -15,8 +16,9 @@ public class TrackPenpalRepliesTests {
         List<String> commands = List.of("L", "Q");
         InMemoryInputReader inputReader = new InMemoryInputReader(commands);
         CapturingOutputWriter outputWriter = new CapturingOutputWriter();
+        InMemoryLetterBox letterBox = new InMemoryLetterBox();
         TrackPenpalReplies app = 
-                new TrackPenpalReplies(new InMemoryLetterBox(), inputReader, outputWriter);
+                new TrackPenpalReplies(letterBox, inputReader, outputWriter, new CommandFactory(letterBox, outputWriter));
 
         app.run();
 
@@ -28,7 +30,9 @@ public class TrackPenpalRepliesTests {
         List<String> commands = List.of("A Amandine;04/07/2024", "L", "Q");
         InMemoryInputReader inputReader = new InMemoryInputReader(commands);
         CapturingOutputWriter outputWriter = new CapturingOutputWriter();
-        TrackPenpalReplies app = new TrackPenpalReplies(new InMemoryLetterBox(), inputReader, outputWriter);
+        InMemoryLetterBox letterBox = new InMemoryLetterBox();
+        TrackPenpalReplies app = 
+                new TrackPenpalReplies(letterBox, inputReader, outputWriter, new CommandFactory(letterBox, outputWriter));
         
         app.run();
         

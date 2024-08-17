@@ -1,7 +1,9 @@
 package com.xyphias.trackpenpalreplies;
 
+import com.xyphias.trackpenpalreplies.commands.CommandFactory;
 import com.xyphias.trackpenpalreplies.infrastructure.db.SQLiteLetterBox;
 import com.xyphias.trackpenpalreplies.infrastructure.io.ConsoleOutputWriter;
+import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 import org.flywaydb.core.Flyway;
 
 import java.util.logging.*;
@@ -18,11 +20,16 @@ public class Main {
 
         LetterBox letterBox = createSQLiteLetterBox(dbFile);
 
+        OutputWriter outputWriter = new ConsoleOutputWriter();
+
+        CommandFactory commandFactory = new CommandFactory(letterBox, outputWriter);
+        
         TrackPenpalReplies app =
                 new TrackPenpalReplies(
                         letterBox,
                         System.console()::readLine,
-                        new ConsoleOutputWriter()
+                        outputWriter,
+                        commandFactory
                 );
 
         app.run();

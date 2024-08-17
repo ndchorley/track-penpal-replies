@@ -10,13 +10,15 @@ public class TrackPenpalReplies {
     private final InputReader inputReader;
     private final OutputWriter outputWriter;
     private final LetterBox letterBox;
+    private final CommandFactory commandFactory;
 
     public TrackPenpalReplies(
-            LetterBox letterBox, InputReader inputReader, OutputWriter outputWriter
+            LetterBox letterBox, InputReader inputReader, OutputWriter outputWriter, CommandFactory commandFactory
     ) {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
         this.letterBox = letterBox;
+        this.commandFactory = commandFactory;
     }
 
     public void run() {
@@ -35,8 +37,8 @@ public class TrackPenpalReplies {
         outputWriter.write("enter command: ");
 
         String input = inputReader.readLine();
-        
-        Command command = (new CommandFactory(letterBox, outputWriter)).createFrom(input);
+
+        Command command = commandFactory.createFrom(input);
         
         return command;
     }
