@@ -16,13 +16,12 @@ public class TrackPenpalRepliesTests {
     private LetterBox letterBox = new InMemoryLetterBox();
     private CapturingOutputWriter outputWriter = new CapturingOutputWriter();
     private CommandFactory commandFactory = new CommandFactory(letterBox, outputWriter);
+    private final TrackPenpalReplies app = new TrackPenpalReplies(inputReader, outputWriter, commandFactory);
 
     @Test
     public void it_displays_a_message_when_no_letters_need_a_reply() {
         List<String> commands = List.of("L", "Q");
         inputReader.withInputs(commands);
-        TrackPenpalReplies app =
-                new TrackPenpalReplies(inputReader, outputWriter, commandFactory);
 
         app.run();
 
@@ -33,8 +32,6 @@ public class TrackPenpalRepliesTests {
     public void it_displays_the_details_of_a_letter() {
         List<String> commands = List.of("A Amandine;04/07/2024", "L", "Q");
         inputReader.withInputs(commands);
-        TrackPenpalReplies app =
-                new TrackPenpalReplies(inputReader, outputWriter, commandFactory);
 
         app.run();
 
