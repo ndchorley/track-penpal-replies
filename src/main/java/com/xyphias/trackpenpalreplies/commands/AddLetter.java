@@ -12,6 +12,7 @@ public final class AddLetter implements Command {
         this.letterBox = letterBox;
     }
     
+    @Override
     public void execute() {
         letterBox.add(letter);
     }

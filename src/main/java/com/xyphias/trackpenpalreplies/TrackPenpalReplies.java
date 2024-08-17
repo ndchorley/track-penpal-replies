@@ -1,8 +1,6 @@
 package com.xyphias.trackpenpalreplies;
 
-import com.xyphias.trackpenpalreplies.commands.AddLetter;
 import com.xyphias.trackpenpalreplies.commands.Command;
-import com.xyphias.trackpenpalreplies.commands.ListLetters;
 import com.xyphias.trackpenpalreplies.commands.Quit;
 import com.xyphias.trackpenpalreplies.infrastructure.io.InputReader;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
@@ -23,23 +21,14 @@ public class TrackPenpalReplies {
     }
 
     public void run() {
-        boolean running = true;
-        
-        while (running) {
+        while (true) {
             Command command = readCommand();
 
             outputWriter.writeLine("");
             
-            if (command instanceof ListLetters listLetters) 
-                listLetters.execute();
-
-            switch (command) {
-                case ListLetters _ -> {}
-
-                case AddLetter addLetterCommand -> addLetterCommand.execute();
-
-                case Quit _ ->  running = false;
-            }
+            if (command instanceof Quit) break;
+            
+            command.execute();
         }
     }
 
