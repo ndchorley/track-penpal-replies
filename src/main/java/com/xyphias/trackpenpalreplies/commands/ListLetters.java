@@ -4,6 +4,7 @@ import com.xyphias.trackpenpalreplies.Letter;
 import com.xyphias.trackpenpalreplies.LetterBox;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.stream.Stream;
@@ -36,7 +37,11 @@ public final class ListLetters implements Command {
 
     private void displayDetails(Letter letter) {
         outputWriter.writeLine(
-                letter.from().name() + ", " + letter.receivedOn().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+                letter.from().name() + ", " + formattedAsDayWholeWordMonthAndYear(letter.receivedOn())
         );
+    }
+
+    private static String formattedAsDayWholeWordMonthAndYear(LocalDate receivedOn) {
+        return receivedOn.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"));
     }
 }
