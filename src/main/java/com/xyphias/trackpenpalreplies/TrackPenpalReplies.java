@@ -6,6 +6,8 @@ import com.xyphias.trackpenpalreplies.commands.Quit;
 import com.xyphias.trackpenpalreplies.infrastructure.io.InputReader;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
+import java.util.stream.Stream;
+
 public class TrackPenpalReplies {
     private final InputReader inputReader;
     private final OutputWriter outputWriter;
@@ -20,15 +22,15 @@ public class TrackPenpalReplies {
     }
 
     public void run() {
-        while (true) {
-            Command command = readCommand();
 
-            outputWriter.writeLine("");
-            
-            if (command instanceof Quit) break;
-            
-            command.execute();
-        }
+        Stream
+                .generate(this::readCommand)
+                .takeWhile(command -> !(command instanceof Quit))
+                .forEach(command -> {
+                    outputWriter.writeLine("");
+                    
+                    command.execute();
+                });
     }
 
     private Command readCommand() {
