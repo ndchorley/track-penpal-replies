@@ -19,15 +19,18 @@ public final class ListLetters implements Command {
     public void execute() {
         if (letterBox.isEmpty())
             outputWriter.writeLine("No letters need a reply");
-        else {
+        else
             letterBox.contents()
                     .stream()
-                    .sorted(Comparator.comparing(Letter::receivedOn))
-                    .forEach(letter ->
-                            outputWriter.writeLine(
-                                    letter.from().name() + ", " + letter.receivedOn().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
-                            )
-            );
-        }
+                    .sorted(byReceivedOn)
+                    .forEach(this::displayDetails);
+    }
+
+    private final Comparator<Letter> byReceivedOn = Comparator.comparing(Letter::receivedOn);
+
+    private void displayDetails(Letter letter) {
+        outputWriter.writeLine(
+                letter.from().name() + ", " + letter.receivedOn().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+        );
     }
 }
