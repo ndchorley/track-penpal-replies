@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SQLiteLetterBox implements LetterBox {
@@ -42,14 +43,18 @@ public class SQLiteLetterBox implements LetterBox {
                     connection
                             .prepareStatement("SELECT * FROM Letters")
                             .executeQuery();
+            
+            List<Letter> letters = new ArrayList<>();
 
-            if (!resultSet.next()) return List.of();
+            while (resultSet.next()) {
+                String name = resultSet.getString("from_penpal");
+                LocalDate receivedOn =
+                        LocalDate.parse(resultSet.getString("received_on"));
+
+                letters.add(new Letter(new Penpal(name), receivedOn));
+            }
             
-            String name = resultSet.getString("from_penpal");
-            LocalDate receivedOn =
-                    LocalDate.parse(resultSet.getString("received_on"));
-            
-            return List.of(new Letter(new Penpal(name), receivedOn));
+            return letters;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

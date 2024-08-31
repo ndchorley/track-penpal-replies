@@ -6,6 +6,7 @@ import com.xyphias.trackpenpalreplies.Penpal;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,10 +26,32 @@ public abstract class LetterBoxContract {
                         new Penpal("Dmitry"),
                         LocalDate.of(2024, 5, 1)
                 );
-        
+
         letterBox.add(letter);
 
         assertThat(letterBox.isEmpty()).isFalse();
         assertThat(letterBox.contents().getFirst()).isEqualTo(letter);
+    }
+
+    @Test
+    public void all_letters_that_have_been_added_can_be_retrieved() {
+        List<Letter> letters = List.of(
+                new Letter(
+                        new Penpal("Dmitry"),
+                        LocalDate.of(2024, 5, 1)
+                ),
+                new Letter(
+                        new Penpal("Fabrice"),
+                        LocalDate.of(2024, 6, 13)
+                ),
+                new Letter(
+                        new Penpal("Anna"),
+                        LocalDate.of(2024, 8, 28)
+                )              
+        );
+        
+        letters.forEach(letter -> letterBox.add(letter));
+        
+        assertThat(letterBox.contents()).isEqualTo(letters);
     }
 }
