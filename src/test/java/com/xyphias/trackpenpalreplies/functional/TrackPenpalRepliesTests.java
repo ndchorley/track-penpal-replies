@@ -37,4 +37,21 @@ public class TrackPenpalRepliesTests {
 
         Approvals.verify(outputWriter.written);
     }
+    
+    @Test
+    public void it_displays_older_letters_before_newer_ones() {
+        List<String> commands = 
+                List.of(
+                        "A Marta;11/08/2024",
+                        "A Amandine;04/07/2024",
+                        "A Eric;01/06/2024",
+                        "L",
+                        "Q"
+                );
+        inputReader.withInputs(commands);
+
+        app.run();
+
+        Approvals.verify(outputWriter.written);        
+    }
 }
