@@ -21,5 +21,10 @@ public class InMemoryLetterBox implements LetterBox {
         letters.add(letter);
     }
 
+    @Override
+    public void remove() {
+        letters.removeFirst();
+    }
+
     private final ArrayList<Letter> letters = new ArrayList<>();
 }

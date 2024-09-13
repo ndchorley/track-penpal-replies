@@ -75,5 +75,10 @@ public class SQLiteLetterBox implements LetterBox {
         }
     }
 
+    @Override
+    public void remove() {
+        
+    }
+
     private final SQLiteDataSource dataSource;
 }

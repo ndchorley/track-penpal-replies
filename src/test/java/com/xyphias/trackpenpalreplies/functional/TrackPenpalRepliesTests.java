@@ -54,4 +54,20 @@ public class TrackPenpalRepliesTests {
 
         Approvals.verify(outputWriter.written);        
     }
+    
+    @Test
+    public void a_letter_can_be_removed() {
+        List<String> commands =
+                List.of(
+                        "A Amandine;04/07/2024",
+                        "R Amandine",
+                        "L",
+                        "Q"
+                );
+        inputReader.withInputs(commands);
+
+        app.run();
+
+        Approvals.verify(outputWriter.written);
+    }
 }

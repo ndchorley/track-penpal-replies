@@ -39,7 +39,7 @@ public class CommandFactory {
                     new Letter(new Penpal(name), receivedOn),
                     letterBox
             );
-        }
+        } else if (input.startsWith("R")) return new RemoveLetter(letterBox);
 
         return new Quit();
     }

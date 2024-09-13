@@ -8,4 +8,6 @@ public interface LetterBox {
     List<Letter> contents();
 
     void add(Letter letter);
+
+    void remove();
 }
