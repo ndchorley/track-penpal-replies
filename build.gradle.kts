@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     implementation("org.xerial:sqlite-jdbc:3.49.1.0")
-    implementation("org.flywaydb:flyway-core:11.1.0")
+    implementation("org.flywaydb:flyway-core:11.5.0")
     
     implementation("org.slf4j:slf4j-api:2.0.16")
     implementation("org.slf4j:slf4j-jdk14:2.0.16")
