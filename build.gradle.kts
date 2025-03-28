@@ -16,8 +16,9 @@ dependencies {
     implementation("org.xerial:sqlite-jdbc:3.49.1.0")
     implementation("org.flywaydb:flyway-core:11.5.0")
     
-    implementation("org.slf4j:slf4j-api:2.0.16")
-    implementation("org.slf4j:slf4j-jdk14:2.0.16")
+    val slf4JVersion = "2.0.17"
+    implementation("org.slf4j:slf4j-api:$slf4JVersion")
+    implementation("org.slf4j:slf4j-jdk14:$slf4JVersion")
     
     testImplementation(platform("org.junit:junit-bom:5.11.4"))
     testImplementation("org.junit.jupiter:junit-jupiter")
