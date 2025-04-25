@@ -2,6 +2,7 @@ package com.xyphias.trackpenpalreplies.fakes.db;
 
 import com.xyphias.trackpenpalreplies.Letter;
 import com.xyphias.trackpenpalreplies.LetterBox;
+import com.xyphias.trackpenpalreplies.Penpal;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,8 +23,8 @@ public class InMemoryLetterBox implements LetterBox {
     }
 
     @Override
-    public void remove() {
-        letters.removeFirst();
+    public void remove(Penpal sender) {
+        letters.removeIf(letter -> letter.from().equals(sender));
     }
 
     private final ArrayList<Letter> letters = new ArrayList<>();

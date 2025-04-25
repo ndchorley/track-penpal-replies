@@ -39,7 +39,14 @@ public class CommandFactory {
                     new Letter(new Penpal(name), receivedOn),
                     letterBox
             );
-        } else if (input.startsWith("R")) return new RemoveLetter(letterBox);
+        } else if (input.startsWith("R")) {
+            Matcher matcher = Pattern.compile("R ([\\w]+)").matcher(input);
+            matcher.matches();
+            
+            String name = matcher.group(1);
+            
+            return new RemoveLetter(letterBox, new Penpal(name));
+        }
 
         return new Quit();
     }

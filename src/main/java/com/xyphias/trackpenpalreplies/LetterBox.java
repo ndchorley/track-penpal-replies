@@ -9,5 +9,5 @@ public interface LetterBox {
 
     void add(Letter letter);
 
-    void remove();
+    void remove(Penpal sender);
 }

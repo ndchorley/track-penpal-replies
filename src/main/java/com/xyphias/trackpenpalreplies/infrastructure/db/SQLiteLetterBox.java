@@ -76,7 +76,7 @@ public class SQLiteLetterBox implements LetterBox {
     }
 
     @Override
-    public void remove() {
+    public void remove(Penpal sender) {
         
     }
 

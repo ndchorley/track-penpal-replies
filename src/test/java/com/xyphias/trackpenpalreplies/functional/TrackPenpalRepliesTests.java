@@ -59,6 +59,7 @@ public class TrackPenpalRepliesTests {
     public void a_letter_can_be_removed() {
         List<String> commands =
                 List.of(
+                        "A John;07/08/2024",
                         "A Amandine;04/07/2024",
                         "R Amandine",
                         "L",
