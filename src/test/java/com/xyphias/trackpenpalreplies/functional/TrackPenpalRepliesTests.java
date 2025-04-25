@@ -5,7 +5,7 @@ import com.xyphias.trackpenpalreplies.TrackPenpalReplies;
 import com.xyphias.trackpenpalreplies.commands.CommandFactory;
 import com.xyphias.trackpenpalreplies.fakes.io.CapturingOutputWriter;
 import com.xyphias.trackpenpalreplies.fakes.io.InMemoryInputReader;
-import com.xyphias.trackpenpalreplies.fakes.io.InMemoryLetterBox;
+import com.xyphias.trackpenpalreplies.fakes.db.InMemoryLetterBox;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
 
