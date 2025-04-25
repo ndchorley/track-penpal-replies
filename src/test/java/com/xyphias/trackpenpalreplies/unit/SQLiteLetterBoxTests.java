@@ -16,7 +16,11 @@ public class SQLiteLetterBoxTests extends LetterBoxContract {
     public SQLiteLetterBoxTests() throws IOException {
         dBFile = String.valueOf(Files.createTempFile("track-penpal-replies-letterbox", ".db"));
 
-        Flyway flyway = Flyway.configure().dataSource("jdbc:sqlite:" + dBFile, null, null).load();
+        Flyway flyway =
+                Flyway
+                        .configure()
+                        .dataSource("jdbc:sqlite:" + dBFile, "", "")
+                        .load();
         flyway.migrate();
         
         this.letterBox = new SQLiteLetterBox(dBFile);
