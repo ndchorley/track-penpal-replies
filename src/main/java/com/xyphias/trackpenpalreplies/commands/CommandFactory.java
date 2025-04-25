@@ -11,8 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CommandFactory {
-    private LetterBox letterBox;
-    private OutputWriter outputWriter;
+    private final LetterBox letterBox;
+    private final OutputWriter outputWriter;
 
     public CommandFactory(LetterBox letterBox, OutputWriter outputWriter) {
         this.letterBox = letterBox;
