@@ -14,6 +14,6 @@ public class RemoveLetter implements Command {
 
     @Override
     public void execute() {
-        letterBox.remove(sender);
+        letterBox.removeLetterFrom(sender);
     }
 }

@@ -23,7 +23,7 @@ public class InMemoryLetterBox implements LetterBox {
     }
 
     @Override
-    public void remove(Penpal sender) {
+    public void removeLetterFrom(Penpal sender) {
         letters.removeIf(letter -> letter.from().equals(sender));
     }
 
