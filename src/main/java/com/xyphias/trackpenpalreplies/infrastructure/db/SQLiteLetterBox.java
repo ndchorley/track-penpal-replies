@@ -77,7 +77,16 @@ public class SQLiteLetterBox implements LetterBox {
 
     @Override
     public void removeLetterFrom(Penpal sender) {
-        
+        try (Connection connection = dataSource.getConnection()) {
+            PreparedStatement statement =
+                    connection.prepareStatement("DELETE FROM Letters WHERE from_penpal = (?)");
+            
+            statement.setString(1, sender.name());
+            
+            statement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private final SQLiteDataSource dataSource;
