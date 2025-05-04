@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+java \
+    --enable-native-access=ALL-UNNAMED \
+    -jar ~/software/track-penpal-replies-1.0-SNAPSHOT-all.jar
