@@ -63,17 +63,8 @@ public abstract class LetterBoxContract {
                         camille, 
                         LocalDate.of(2025, 4, 25)
                 );
-        
-        List<Letter> letters = List.of(
-                new Letter(
-                        new Penpal("John"),
-                        LocalDate.of(2025, 3, 1)
-                ),
-                letterFromCamille
-        );
-        
-        letters.forEach(letter -> letterBox.add(letter));
-        
+        letterBox.add(letterFromCamille);
+
         letterBox.removeLetterFrom(camille);
         
         assertThat(letterBox.contents()).doesNotContain(letterFromCamille);
