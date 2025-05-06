@@ -1,6 +1,6 @@
 package com.xyphias.trackpenpalreplies.unit;
 
-import com.xyphias.trackpenpalreplies.infrastructure.db.SQLiteLetterBox;
+import com.xyphias.trackpenpalreplies.infrastructure.storage.SQLiteLetterBox;
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.sqlite.SQLiteDataSource;

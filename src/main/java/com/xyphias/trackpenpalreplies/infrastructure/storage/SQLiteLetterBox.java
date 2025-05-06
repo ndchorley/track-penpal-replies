@@ -1,4 +1,4 @@
-package com.xyphias.trackpenpalreplies.infrastructure.db;
+package com.xyphias.trackpenpalreplies.infrastructure.storage;
 
 import com.xyphias.trackpenpalreplies.Letter;
 import com.xyphias.trackpenpalreplies.LetterBox;
