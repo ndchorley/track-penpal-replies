@@ -26,7 +26,8 @@ public class CommandFactory {
             Matcher matcher = 
                     Pattern.compile("A ([\\w ]+);(\\d{2}/\\d{2}/\\d{4})")
                             .matcher(input);
-            matcher.matches();
+            
+            if (!matcher.matches()) return new BadCommand();
             
             String name = matcher.group(1);
             LocalDate receivedOn = 

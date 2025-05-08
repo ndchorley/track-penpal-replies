@@ -71,4 +71,18 @@ public class TrackPenpalRepliesTests {
 
         Approvals.verify(outputWriter.written);
     }
+
+    @Test
+    public void a_message_is_displayed_if_a_command_is_used_incorrectly() {
+        List<String> commands =
+                List.of(
+                        "A John",
+                        "Q"
+                );
+        inputReader.withInputs(commands);
+
+        app.run();
+
+        Approvals.verify(outputWriter.written);
+    }
 }
