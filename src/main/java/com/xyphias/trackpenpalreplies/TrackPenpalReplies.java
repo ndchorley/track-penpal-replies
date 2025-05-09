@@ -1,6 +1,5 @@
 package com.xyphias.trackpenpalreplies;
 
-import com.xyphias.trackpenpalreplies.commands.BadCommand;
 import com.xyphias.trackpenpalreplies.commands.Command;
 import com.xyphias.trackpenpalreplies.commands.CommandFactory;
 import com.xyphias.trackpenpalreplies.commands.Quit;
@@ -26,7 +25,7 @@ public class TrackPenpalReplies {
         Stream
                 .generate(this::readCommand)
                 .flatMap(command -> {
-                    if (command instanceof BadCommand) {
+                    if (command == null) {
                         outputWriter.writeLine("");
                         outputWriter.writeLine("usage: A <from>;<received on>");
                         return Stream.generate(this::readCommand);
