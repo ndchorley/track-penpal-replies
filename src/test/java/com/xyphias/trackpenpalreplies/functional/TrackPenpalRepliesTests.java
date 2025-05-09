@@ -78,6 +78,7 @@ public class TrackPenpalRepliesTests {
     static Stream<String> incorrectCommands() {
         return Stream.of("A John");
     }
+
     @ParameterizedTest
     @MethodSource("incorrectCommands")
     public void it_displays_a_message_if_a_command_is_used_incorrectly(
@@ -94,7 +95,11 @@ public class TrackPenpalRepliesTests {
 
         Approvals.verify(
                 outputWriter.written,
-                Approvals.NAMES.withParameters(incorrectCommand.substring(0, 1))
+                Approvals.NAMES.withParameters(commandLetter(incorrectCommand))
         );
+    }
+
+    private static String commandLetter(String incorrectCommand) {
+        return incorrectCommand.substring(0, 1);
     }
 }
