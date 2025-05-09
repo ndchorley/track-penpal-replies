@@ -73,7 +73,7 @@ public class TrackPenpalRepliesTests {
     }
 
     @Test
-    public void a_message_is_displayed_if_a_command_is_used_incorrectly() {
+    public void it_displays_a_message_if_a_command_is_used_incorrectly() {
         List<String> commands =
                 List.of(
                         "A John",
