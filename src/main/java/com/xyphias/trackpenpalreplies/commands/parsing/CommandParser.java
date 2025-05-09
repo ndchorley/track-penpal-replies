@@ -1,4 +1,6 @@
-package com.xyphias.trackpenpalreplies.commands;
+package com.xyphias.trackpenpalreplies.commands.parsing;
+
+import com.xyphias.trackpenpalreplies.commands.Command;
 
 import java.util.regex.Matcher;
 

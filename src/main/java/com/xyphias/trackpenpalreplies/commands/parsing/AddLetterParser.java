@@ -1,15 +1,17 @@
-package com.xyphias.trackpenpalreplies.commands;
+package com.xyphias.trackpenpalreplies.commands.parsing;
 
 import com.xyphias.trackpenpalreplies.Letter;
 import com.xyphias.trackpenpalreplies.LetterBox;
 import com.xyphias.trackpenpalreplies.Penpal;
+import com.xyphias.trackpenpalreplies.commands.AddLetter;
+import com.xyphias.trackpenpalreplies.commands.Command;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class AddLetterParser extends CommandParser {
+public class AddLetterParser extends CommandParser {
     private final LetterBox letterBox;
     
     public AddLetterParser(LetterBox letterBox) {

@@ -2,6 +2,7 @@ package com.xyphias.trackpenpalreplies.commands;
 
 import com.xyphias.trackpenpalreplies.LetterBox;
 import com.xyphias.trackpenpalreplies.Penpal;
+import com.xyphias.trackpenpalreplies.commands.parsing.AddLetterParser;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
 import java.util.regex.Matcher;
