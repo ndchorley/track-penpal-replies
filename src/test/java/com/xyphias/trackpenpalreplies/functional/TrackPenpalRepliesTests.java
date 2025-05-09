@@ -8,8 +8,11 @@ import com.xyphias.trackpenpalreplies.fakes.io.InMemoryInputReader;
 import com.xyphias.trackpenpalreplies.fakes.storage.InMemoryLetterBox;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class TrackPenpalRepliesTests {
     private final InMemoryInputReader inputReader = new InMemoryInputReader();
@@ -72,17 +75,26 @@ public class TrackPenpalRepliesTests {
         Approvals.verify(outputWriter.written);
     }
 
-    @Test
-    public void it_displays_a_message_if_a_command_is_used_incorrectly() {
+    static Stream<String> incorrectCommands() {
+        return Stream.of("A John");
+    }
+    @ParameterizedTest
+    @MethodSource("incorrectCommands")
+    public void it_displays_a_message_if_a_command_is_used_incorrectly(
+            String incorrectCommand
+    ) {
         List<String> commands =
                 List.of(
-                        "A John",
+                        incorrectCommand,
                         "Q"
                 );
         inputReader.withInputs(commands);
 
         app.run();
 
-        Approvals.verify(outputWriter.written);
+        Approvals.verify(
+                outputWriter.written,
+                Approvals.NAMES.withParameters(incorrectCommand.substring(0, 1))
+        );
     }
 }
