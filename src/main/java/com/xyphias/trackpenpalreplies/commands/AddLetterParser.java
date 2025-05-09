@@ -16,7 +16,7 @@ class AddLetterParser {
         this.letterBox = letterBox;
     }
 
-    public AddLetter parse(String input) {
+    public Command parse(String input) {
         Matcher matcher = matcherFor(input);
 
         if (!matcher.matches()) return null;
@@ -24,7 +24,7 @@ class AddLetterParser {
         return commandFrom(matcher);
     }
 
-    private AddLetter commandFrom(Matcher matcher) {
+    private Command commandFrom(Matcher matcher) {
         String name = matcher.group(1);
         LocalDate receivedOn =
                 LocalDate.parse(
