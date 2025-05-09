@@ -9,22 +9,23 @@ import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class AddLetterParser {
+class AddLetterParser extends CommandParser {
     private final LetterBox letterBox;
-
+    
     public AddLetterParser(LetterBox letterBox) {
         this.letterBox = letterBox;
     }
 
-    public Command parse(String input) {
-        Matcher matcher = matcherFor(input);
-
-        if (!matcher.matches()) return null;
-
-        return commandFrom(matcher);
+    @Override
+    protected Matcher matcherFor(String input) {
+        return
+                Pattern
+                        .compile("A ([\\w ]+);(\\d{2}/\\d{2}/\\d{4})")
+                        .matcher(input);
     }
-
-    private Command commandFrom(Matcher matcher) {
+    
+    @Override
+    protected Command commandFrom(Matcher matcher) {
         String name = matcher.group(1);
         LocalDate receivedOn =
                 LocalDate.parse(
@@ -37,11 +38,5 @@ class AddLetterParser {
                 letterBox
         );
     }
-
-    private static Matcher matcherFor(String input) {
-        return 
-                Pattern
-                        .compile("A ([\\w ]+);(\\d{2}/\\d{2}/\\d{4})")
-                        .matcher(input);
-    }
+    
 }
