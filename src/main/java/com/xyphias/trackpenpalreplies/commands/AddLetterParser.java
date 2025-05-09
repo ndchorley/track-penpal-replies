@@ -17,12 +17,14 @@ class AddLetterParser {
     }
 
     public AddLetter parse(String input) {
-        Matcher matcher =
-                Pattern.compile("A ([\\w ]+);(\\d{2}/\\d{2}/\\d{4})")
-                        .matcher(input);
+        Matcher matcher = matcherFor(input);
 
         if (!matcher.matches()) return null;
 
+        return commandFrom(matcher);
+    }
+
+    private AddLetter commandFrom(Matcher matcher) {
         String name = matcher.group(1);
         LocalDate receivedOn =
                 LocalDate.parse(
@@ -34,5 +36,12 @@ class AddLetterParser {
                 new Letter(new Penpal(name), receivedOn),
                 letterBox
         );
+    }
+
+    private static Matcher matcherFor(String input) {
+        return 
+                Pattern
+                        .compile("A ([\\w ]+);(\\d{2}/\\d{2}/\\d{4})")
+                        .matcher(input);
     }
 }
