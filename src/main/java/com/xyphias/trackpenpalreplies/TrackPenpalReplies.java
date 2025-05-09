@@ -45,8 +45,6 @@ public class TrackPenpalReplies {
 
         String input = inputReader.readLine();
 
-        Command command = commandFactory.createFrom(input);
-        
-        return command;
+        return commandFactory.createFrom(input);
     }
 }
