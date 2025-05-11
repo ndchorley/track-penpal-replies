@@ -9,7 +9,7 @@ public abstract class CommandParser {
     public Command parse(String input) {
         Matcher matcher = matcherFor(input);
 
-        if (!matcher.matches()) return new IncorrectCommand();
+        if (!matcher.matches()) return new IncorrectCommand(usageMessage());
 
         return commandFrom(matcher);
     }
@@ -17,4 +17,6 @@ public abstract class CommandParser {
     protected abstract Matcher matcherFor(String input);
 
     protected abstract Command commandFrom(Matcher matcher);
+
+    protected abstract String usageMessage();
 }

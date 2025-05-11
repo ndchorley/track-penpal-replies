@@ -40,5 +40,9 @@ public class AddLetterParser extends CommandParser {
                 letterBox
         );
     }
-    
+
+    @Override
+    protected String usageMessage() {
+        return "A <from>, <received on>";
+    }
 }
