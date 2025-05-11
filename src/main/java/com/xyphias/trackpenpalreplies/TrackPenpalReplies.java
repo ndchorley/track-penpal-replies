@@ -2,6 +2,7 @@ package com.xyphias.trackpenpalreplies;
 
 import com.xyphias.trackpenpalreplies.commands.Command;
 import com.xyphias.trackpenpalreplies.commands.CommandFactory;
+import com.xyphias.trackpenpalreplies.commands.IncorrectCommand;
 import com.xyphias.trackpenpalreplies.commands.Quit;
 import com.xyphias.trackpenpalreplies.infrastructure.io.InputReader;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
@@ -25,7 +26,7 @@ public class TrackPenpalReplies {
         Stream
                 .generate(this::readCommand)
                 .flatMap(command -> {
-                    if (command == null) {
+                    if (command instanceof IncorrectCommand) {
                         outputWriter.writeLine("");
                         outputWriter.writeLine("usage: A <from>, <received on>");
                         return Stream.generate(this::readCommand);

@@ -1,6 +1,7 @@
 package com.xyphias.trackpenpalreplies.commands.parsing;
 
 import com.xyphias.trackpenpalreplies.commands.Command;
+import com.xyphias.trackpenpalreplies.commands.IncorrectCommand;
 
 import java.util.regex.Matcher;
 
@@ -8,7 +9,7 @@ public abstract class CommandParser {
     public Command parse(String input) {
         Matcher matcher = matcherFor(input);
 
-        if (!matcher.matches()) return null;
+        if (!matcher.matches()) return new IncorrectCommand();
 
         return commandFrom(matcher);
     }
