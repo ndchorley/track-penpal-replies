@@ -27,7 +27,7 @@ public class TrackPenpalReplies {
                 .flatMap(command -> {
                     if (command == null) {
                         outputWriter.writeLine("");
-                        outputWriter.writeLine("usage: A <from>;<received on>");
+                        outputWriter.writeLine("usage: A <from>, <received on>");
                         return Stream.generate(this::readCommand);
                     }
                     else return Stream.of(command);

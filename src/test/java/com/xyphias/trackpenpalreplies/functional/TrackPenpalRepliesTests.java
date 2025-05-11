@@ -33,7 +33,7 @@ public class TrackPenpalRepliesTests {
 
     @Test
     public void it_displays_the_details_of_a_letter() {
-        List<String> commands = List.of("A Amandine;04/07/2024", "L", "Q");
+        List<String> commands = List.of("A Amandine, 04/07/2024", "L", "Q");
         inputReader.withInputs(commands);
 
         app.run();
@@ -45,9 +45,9 @@ public class TrackPenpalRepliesTests {
     public void it_displays_older_letters_before_newer_ones() {
         List<String> commands = 
                 List.of(
-                        "A Marta;11/08/2024",
-                        "A Amandine;04/07/2024",
-                        "A Eric;01/06/2024",
+                        "A Marta, 11/08/2024",
+                        "A Amandine, 04/07/2024",
+                        "A Eric, 01/06/2024",
                         "L",
                         "Q"
                 );
@@ -62,8 +62,8 @@ public class TrackPenpalRepliesTests {
     public void a_letter_can_be_removed() {
         List<String> commands =
                 List.of(
-                        "A John;07/08/2024",
-                        "A Amandine;04/07/2024",
+                        "A John, 07/08/2024",
+                        "A Amandine, 04/07/2024",
                         "R Amandine",
                         "L",
                         "Q"

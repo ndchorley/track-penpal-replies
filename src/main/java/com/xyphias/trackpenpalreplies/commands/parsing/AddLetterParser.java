@@ -22,7 +22,7 @@ public class AddLetterParser extends CommandParser {
     protected Matcher matcherFor(String input) {
         return
                 Pattern
-                        .compile("A ([\\w ]+);(\\d{2}/\\d{2}/\\d{4})")
+                        .compile("A ([\\w ]+),\\s+(\\d{2}/\\d{2}/\\d{4})")
                         .matcher(input);
     }
     
