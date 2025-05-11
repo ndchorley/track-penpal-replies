@@ -3,6 +3,7 @@ package com.xyphias.trackpenpalreplies.commands;
 import com.xyphias.trackpenpalreplies.LetterBox;
 import com.xyphias.trackpenpalreplies.Penpal;
 import com.xyphias.trackpenpalreplies.commands.parsing.AddLetterParser;
+import com.xyphias.trackpenpalreplies.commands.parsing.RemoveLetterParser;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
 import java.util.regex.Matcher;
@@ -23,12 +24,7 @@ public class CommandFactory {
         else if (input.startsWith("A")) {
             return new AddLetterParser(letterBox).parse(input);
         } else if (input.startsWith("R")) {
-            Matcher matcher = Pattern.compile("R ([\\w]+)").matcher(input);
-            matcher.matches();
-            
-            String name = matcher.group(1);
-            
-            return new RemoveLetter(letterBox, new Penpal(name));
+            return new RemoveLetterParser(letterBox).parse(input);
         }
 
         return new Quit();
