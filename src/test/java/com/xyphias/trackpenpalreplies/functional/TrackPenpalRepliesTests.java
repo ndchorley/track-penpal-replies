@@ -76,7 +76,7 @@ public class TrackPenpalRepliesTests {
     }
 
     static Stream<String> incorrectCommands() {
-        return Stream.of("A John");
+        return Stream.of("A John", "R");
     }
 
     @ParameterizedTest
@@ -84,11 +84,7 @@ public class TrackPenpalRepliesTests {
     public void it_displays_a_message_if_a_command_is_used_incorrectly(
             String incorrectCommand
     ) {
-        List<String> commands =
-                List.of(
-                        incorrectCommand,
-                        "Q"
-                );
+        List<String> commands = List.of(incorrectCommand, "Q");
         inputReader.withInputs(commands);
 
         app.run();
