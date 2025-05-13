@@ -18,5 +18,9 @@ public abstract class CommandParser {
 
     protected abstract Command commandFrom(Matcher matcher);
 
-    protected abstract String usageMessage();
+    private String usageMessage() {
+        return "usage: " + commandFormat();
+    }
+    
+    protected abstract String commandFormat();
 }

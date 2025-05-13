@@ -42,7 +42,7 @@ public class AddLetterParser extends CommandParser {
     }
 
     @Override
-    protected String usageMessage() {
+    protected String commandFormat() {
         return "A <from>, <received on>";
     }
 }

@@ -28,7 +28,7 @@ public class RemoveLetterParser extends CommandParser {
     }
 
     @Override
-    protected String usageMessage() {
+    protected String commandFormat() {
         return "R <from>";
     }
 }
