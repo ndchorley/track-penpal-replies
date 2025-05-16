@@ -1,17 +1,19 @@
 package com.xyphias.trackpenpalreplies.commands.parsing;
 
 import com.xyphias.trackpenpalreplies.commands.Command;
-import com.xyphias.trackpenpalreplies.commands.IncorrectCommand;
+import com.xyphias.trackpenpalreplies.infrastructure.Failure;
+import com.xyphias.trackpenpalreplies.infrastructure.Result;
+import com.xyphias.trackpenpalreplies.infrastructure.Success;
 
 import java.util.regex.Matcher;
 
 public abstract class CommandParser {
-    public Command parse(String input) {
+    public Result<String, Command> parse(String input) {
         Matcher matcher = matcherFor(input);
 
-        if (!matcher.matches()) return new IncorrectCommand(usageMessage());
+        if (!matcher.matches()) return new Failure<>(usageMessage());
 
-        return commandFrom(matcher);
+        return new Success<>(commandFrom(matcher));
     }
 
     protected abstract Matcher matcherFor(String input);

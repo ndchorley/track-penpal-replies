@@ -4,6 +4,9 @@ import com.xyphias.trackpenpalreplies.commands.Command;
 import com.xyphias.trackpenpalreplies.commands.CommandFactory;
 import com.xyphias.trackpenpalreplies.commands.IncorrectCommand;
 import com.xyphias.trackpenpalreplies.commands.Quit;
+import com.xyphias.trackpenpalreplies.infrastructure.Failure;
+import com.xyphias.trackpenpalreplies.infrastructure.Result;
+import com.xyphias.trackpenpalreplies.infrastructure.Success;
 import com.xyphias.trackpenpalreplies.infrastructure.io.InputReader;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
@@ -25,24 +28,24 @@ public class TrackPenpalReplies {
     public void run() {
         Stream
                 .generate(this::readCommand)
-                .flatMap(command -> {
-                    if (command instanceof IncorrectCommand) {
+                .flatMap(result -> {
+                    if (result instanceof Failure<String, Command>(String error)) {
                         outputWriter.writeLine("");
-                        outputWriter.writeLine(((IncorrectCommand) command).usageMessage());
+                        outputWriter.writeLine(error);
 
                         return Stream.generate(this::readCommand);
                     }
-                    else return Stream.of(command);
+                    else return Stream.of(result);
                 })
-                .takeWhile(command -> !(command instanceof Quit))
-                .forEach(command -> {
+                .takeWhile(command -> !(command instanceof Success<String, Command>(Quit q)))
+                .forEach(result -> {
                     outputWriter.writeLine("");
-                    
-                    command.execute();
+
+                    ((Success<?, Command>)result).value().execute();
                 });
     }
 
-    private Command readCommand() {
+    private Result<String, Command> readCommand() {
         outputWriter.write("enter command: ");
 
         String input = inputReader.readLine();

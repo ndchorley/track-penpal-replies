@@ -2,10 +2,14 @@ package com.xyphias.trackpenpalreplies.unit;
 
 import com.xyphias.trackpenpalreplies.Penpal;
 import com.xyphias.trackpenpalreplies.commands.AddLetter;
+import com.xyphias.trackpenpalreplies.commands.Command;
 import com.xyphias.trackpenpalreplies.commands.CommandFactory;
+import com.xyphias.trackpenpalreplies.infrastructure.Result;
+import com.xyphias.trackpenpalreplies.infrastructure.Success;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 public class CommandFactoryTests {
     @Test
@@ -13,8 +17,12 @@ public class CommandFactoryTests {
         String input = "A Pascal G, 03/04/2024";
         CommandFactory commandFactory = new CommandFactory(null, null);
 
-        AddLetter command = (AddLetter) commandFactory.createFrom(input);
-
-        assertThat(command.letter.from()).isEqualTo(new Penpal("Pascal G"));
+        Result<String, Command> result = commandFactory.createFrom(input);
+        
+        if (result instanceof Success(AddLetter addLetter)) {
+            assertThat(addLetter.letter.from()).isEqualTo(new Penpal("Pascal G"));
+        } else {
+            fail();
+        }
     }
 }

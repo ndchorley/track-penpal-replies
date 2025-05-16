@@ -3,6 +3,8 @@ package com.xyphias.trackpenpalreplies.commands;
 import com.xyphias.trackpenpalreplies.LetterBox;
 import com.xyphias.trackpenpalreplies.commands.parsing.AddLetterParser;
 import com.xyphias.trackpenpalreplies.commands.parsing.RemoveLetterParser;
+import com.xyphias.trackpenpalreplies.infrastructure.Result;
+import com.xyphias.trackpenpalreplies.infrastructure.Success;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
 public class CommandFactory {
@@ -14,8 +16,9 @@ public class CommandFactory {
         this.outputWriter = outputWriter;
     }
 
-    public Command createFrom(String input) {
-        if (input.equals("L")) return new ListLetters(letterBox, outputWriter);
+    public Result<String, Command> createFrom(String input) {
+        if (input.equals("L"))
+            return new Success<>(new ListLetters(letterBox, outputWriter));
         
         else if (input.startsWith("A")) {
             return new AddLetterParser(letterBox).parse(input);
@@ -23,6 +26,6 @@ public class CommandFactory {
             return new RemoveLetterParser(letterBox).parse(input);
         }
 
-        return new Quit();
+        return new Success<>(new Quit());
     }
 }
