@@ -2,11 +2,10 @@ package com.xyphias.trackpenpalreplies;
 
 import com.xyphias.trackpenpalreplies.commands.Command;
 import com.xyphias.trackpenpalreplies.commands.CommandFactory;
-import com.xyphias.trackpenpalreplies.commands.IncorrectCommand;
 import com.xyphias.trackpenpalreplies.commands.Quit;
-import com.xyphias.trackpenpalreplies.infrastructure.Failure;
-import com.xyphias.trackpenpalreplies.infrastructure.Result;
-import com.xyphias.trackpenpalreplies.infrastructure.Success;
+import com.xyphias.trackpenpalreplies.foundational.Failure;
+import com.xyphias.trackpenpalreplies.foundational.Result;
+import com.xyphias.trackpenpalreplies.foundational.Success;
 import com.xyphias.trackpenpalreplies.infrastructure.io.InputReader;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 

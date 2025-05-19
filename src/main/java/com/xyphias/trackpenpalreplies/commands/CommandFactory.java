@@ -3,8 +3,8 @@ package com.xyphias.trackpenpalreplies.commands;
 import com.xyphias.trackpenpalreplies.LetterBox;
 import com.xyphias.trackpenpalreplies.commands.parsing.AddLetterParser;
 import com.xyphias.trackpenpalreplies.commands.parsing.RemoveLetterParser;
-import com.xyphias.trackpenpalreplies.infrastructure.Result;
-import com.xyphias.trackpenpalreplies.infrastructure.Success;
+import com.xyphias.trackpenpalreplies.foundational.Result;
+import com.xyphias.trackpenpalreplies.foundational.Success;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
 public class CommandFactory {

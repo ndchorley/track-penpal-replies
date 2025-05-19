@@ -4,8 +4,8 @@ import com.xyphias.trackpenpalreplies.Penpal;
 import com.xyphias.trackpenpalreplies.commands.AddLetter;
 import com.xyphias.trackpenpalreplies.commands.Command;
 import com.xyphias.trackpenpalreplies.commands.CommandFactory;
-import com.xyphias.trackpenpalreplies.infrastructure.Result;
-import com.xyphias.trackpenpalreplies.infrastructure.Success;
+import com.xyphias.trackpenpalreplies.foundational.Result;
+import com.xyphias.trackpenpalreplies.foundational.Success;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
