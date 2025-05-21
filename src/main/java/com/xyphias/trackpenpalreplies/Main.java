@@ -4,7 +4,6 @@ import com.xyphias.trackpenpalreplies.commands.CommandFactory;
 import com.xyphias.trackpenpalreplies.infrastructure.storage.SQLiteLetterBox;
 import com.xyphias.trackpenpalreplies.infrastructure.io.ConsoleOutputWriter;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
-import org.flywaydb.core.Flyway;
 
 import java.util.logging.*;
 
@@ -18,7 +17,7 @@ public class Main {
                         System.getenv("HOME") + "/penpal_letterbox.db"
                 );
 
-        LetterBox letterBox = createSQLiteLetterBox(dbFile);
+        LetterBox letterBox = SQLiteLetterBox.createFor(dbFile);
 
         OutputWriter outputWriter = new ConsoleOutputWriter();
 
@@ -51,17 +50,5 @@ public class Main {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private static LetterBox createSQLiteLetterBox(String dbFile) {
-        String jdbcUrl = "jdbc:sqlite:" + dbFile;
-
-        Flyway
-                .configure()
-                .dataSource(jdbcUrl, "", "")
-                .load()
-                .migrate();
-        
-        return new SQLiteLetterBox(dbFile);
     }
 }

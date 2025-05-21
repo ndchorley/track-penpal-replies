@@ -1,7 +1,6 @@
 package com.xyphias.trackpenpalreplies.unit;
 
 import com.xyphias.trackpenpalreplies.infrastructure.storage.SQLiteLetterBox;
-import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.sqlite.SQLiteDataSource;
 
@@ -15,15 +14,8 @@ public class SQLiteLetterBoxTests extends LetterBoxContract {
 
     public SQLiteLetterBoxTests() throws IOException {
         dBFile = String.valueOf(Files.createTempFile("track-penpal-replies-letterbox", ".db"));
-
-        Flyway flyway =
-                Flyway
-                        .configure()
-                        .dataSource("jdbc:sqlite:" + dBFile, "", "")
-                        .load();
-        flyway.migrate();
         
-        this.letterBox = new SQLiteLetterBox(dBFile);
+        this.letterBox = SQLiteLetterBox.createFor(dBFile);
     }
     
     @BeforeEach

@@ -3,6 +3,7 @@ package com.xyphias.trackpenpalreplies.infrastructure.storage;
 import com.xyphias.trackpenpalreplies.Letter;
 import com.xyphias.trackpenpalreplies.LetterBox;
 import com.xyphias.trackpenpalreplies.Penpal;
+import org.flywaydb.core.Flyway;
 import org.sqlite.SQLiteDataSource;
 
 import java.sql.Connection;
@@ -15,6 +16,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLiteLetterBox implements LetterBox {
+    public static SQLiteLetterBox createFor(String dbFile) {
+        String jdbcUrl = "jdbc:sqlite:" + dbFile;
+
+        Flyway
+                .configure()
+                .dataSource(jdbcUrl, "", "")
+                .load()
+                .migrate();
+
+        return new SQLiteLetterBox(dbFile);
+    }
+    
     public SQLiteLetterBox(String dBFile) {
         dataSource = new SQLiteDataSource();
 
