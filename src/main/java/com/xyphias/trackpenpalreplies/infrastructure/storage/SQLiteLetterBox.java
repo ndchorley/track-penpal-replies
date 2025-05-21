@@ -28,7 +28,7 @@ public class SQLiteLetterBox implements LetterBox {
         return new SQLiteLetterBox(dbFile);
     }
     
-    public SQLiteLetterBox(String dBFile) {
+    private SQLiteLetterBox(String dBFile) {
         dataSource = new SQLiteDataSource();
 
         dataSource.setUrl("jdbc:sqlite:" + dBFile);
