@@ -25,13 +25,13 @@ public class SQLiteLetterBox implements LetterBox {
                 .load()
                 .migrate();
 
-        return new SQLiteLetterBox(dbFile);
+        return new SQLiteLetterBox(jdbcUrl);
     }
     
-    private SQLiteLetterBox(String dBFile) {
+    private SQLiteLetterBox(String jdbcUrl) {
         dataSource = new SQLiteDataSource();
 
-        dataSource.setUrl("jdbc:sqlite:" + dBFile);
+        dataSource.setUrl(jdbcUrl);
     }
 
     @Override
