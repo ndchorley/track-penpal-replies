@@ -33,12 +33,15 @@ public final class ListLetters implements Command {
         return letterBox.contents().stream();
     }
     
-    private final Comparator<Letter> byReceivedOn = Comparator.comparing(Letter::receivedOn);
+    private final Comparator<Letter> byReceivedOn = 
+            Comparator.comparing(Letter::receivedOn);
 
     private void displayDetails(Letter letter) {
-        outputWriter.writeLine(
-                letter.from().name() + ", " + formattedAsDayWholeWordMonthAndYear(letter.receivedOn())
-        );
+        String details = 
+                letter.from().name() + ", " +
+                        formattedAsDayWholeWordMonthAndYear(letter.receivedOn());
+        
+        outputWriter.writeLine(details);
     }
 
     private static String formattedAsDayWholeWordMonthAndYear(LocalDate receivedOn) {
