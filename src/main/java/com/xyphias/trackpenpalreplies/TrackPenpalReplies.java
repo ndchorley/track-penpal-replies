@@ -36,7 +36,9 @@ public class TrackPenpalReplies {
                     }
                     else return Stream.of(result);
                 })
-                .takeWhile(command -> !(command instanceof Success<String, Command>(Quit q)))
+                .takeWhile(command -> 
+                        !(command instanceof Success<String, Command>(Quit _))
+                )
                 .forEach(result -> {
                     outputWriter.writeLine("");
 
