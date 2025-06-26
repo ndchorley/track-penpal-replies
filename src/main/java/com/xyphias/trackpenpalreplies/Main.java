@@ -43,7 +43,7 @@ public class Main {
         
         try {
             Handler fileHandler = 
-                    new FileHandler("track-penpal-replies.log", true);
+                    new FileHandler("%h/track-penpal-replies.log", true);
             fileHandler.setFormatter(new SimpleFormatter());
             
             rootLogger.addHandler(fileHandler);
