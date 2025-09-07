@@ -1,7 +1,7 @@
 plugins {
     id("java")
     id("application")
-    id("com.gradleup.shadow").version("9.0.0-rc3")
+    id("com.gradleup.shadow").version("9.1.0")
     id("com.adarshr.test-logger").version("4.0.0")
 }
 
