@@ -38,5 +38,5 @@ java {
 }
 
 application {
-    mainClass = "com.xyphias.trackpenpalreplies.Main"
+    mainClass = "Main"
 }

@@ -1,5 +1,5 @@
-package com.xyphias.trackpenpalreplies;
-
+import com.xyphias.trackpenpalreplies.LetterBox;
+import com.xyphias.trackpenpalreplies.TrackPenpalReplies;
 import com.xyphias.trackpenpalreplies.commands.CommandFactory;
 import com.xyphias.trackpenpalreplies.infrastructure.storage.SQLiteLetterBox;
 import com.xyphias.trackpenpalreplies.infrastructure.io.ConsoleOutputWriter;
@@ -7,8 +7,7 @@ import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
 import java.util.logging.*;
 
-public class Main {
-    public static void main(String[] args) {
+void main() {
         setUpLoggingToFile();
 
         String dbFile =
@@ -33,22 +32,21 @@ public class Main {
         app.run();
     }
 
-    private static void setUpLoggingToFile() {
-        Logger rootLogger = LogManager.getLogManager().getLogger("");
+private static void setUpLoggingToFile() {
+    Logger rootLogger = LogManager.getLogManager().getLogger("");
+    
+    rootLogger.setLevel(Level.WARNING);
+    
+    Handler consoleHandler = rootLogger.getHandlers()[0];
+    rootLogger.removeHandler(consoleHandler);
+    
+    try {
+        Handler fileHandler = 
+                new FileHandler("%h/track-penpal-replies.log", true);
+        fileHandler.setFormatter(new SimpleFormatter());
         
-        rootLogger.setLevel(Level.WARNING);
-        
-        Handler consoleHandler = rootLogger.getHandlers()[0];
-        rootLogger.removeHandler(consoleHandler);
-        
-        try {
-            Handler fileHandler = 
-                    new FileHandler("%h/track-penpal-replies.log", true);
-            fileHandler.setFormatter(new SimpleFormatter());
-            
-            rootLogger.addHandler(fileHandler);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        rootLogger.addHandler(fileHandler);
+    } catch (Exception e) {
+        throw new RuntimeException(e);
     }
 }
