@@ -24,7 +24,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("org.assertj:assertj-core:3.27.6")
-    testImplementation("com.approvaltests:approvaltests:25.7.0")
+    testImplementation("com.approvaltests:approvaltests:26.1.0")
 }
 
 tasks.test {
