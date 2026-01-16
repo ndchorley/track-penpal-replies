@@ -17,12 +17,11 @@ public class CommandFactory {
     }
 
     public Result<String, Command> createFrom(String input) {
-        if (input.equals("L"))
+        if (input.equals("L")) {
             return new Success<>(new ListLetters(letterBox, outputWriter));
-        
-        else if (input.startsWith("A")) {
+        } else if (input.startsWith("A")) 
             return new AddLetterParser(letterBox).parse(input);
-        } else if (input.startsWith("R")) {
+        else if (input.startsWith("R")) {
             return new RemoveLetterParser(letterBox).parse(input);
         }
 
