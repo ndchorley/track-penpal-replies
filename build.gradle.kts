@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     implementation("org.xerial:sqlite-jdbc:3.51.2.0")
-    implementation("org.flywaydb:flyway-core:12.0.1")
+    implementation("org.flywaydb:flyway-core:12.0.2")
     
     val slf4JVersion = "2.0.17"
     implementation("org.slf4j:slf4j-api:$slf4JVersion")
