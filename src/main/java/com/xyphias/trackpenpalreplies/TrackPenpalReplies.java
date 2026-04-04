@@ -31,7 +31,6 @@ public class TrackPenpalReplies {
             return;
 
         if (result instanceof Failure<String, Command>(String error)) {
-            outputWriter.writeLine("");
             outputWriter.writeLine(error);
 
             loop();
