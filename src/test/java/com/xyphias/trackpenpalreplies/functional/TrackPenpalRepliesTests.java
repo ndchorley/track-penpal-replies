@@ -14,6 +14,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class TrackPenpalRepliesTests {
     private final InMemoryInputReader inputReader = new InMemoryInputReader();
     private final LetterBox letterBox = new InMemoryLetterBox();
@@ -28,7 +30,7 @@ public class TrackPenpalRepliesTests {
 
         app.run();
 
-        Approvals.verify(outputWriter.written);
+        assertThat(outputWriter.written).isEqualTo(">> No letters need a reply\n>> ");
     }
 
     @Test
