@@ -47,7 +47,7 @@ public class TrackPenpalReplies {
     private Result<String, Command> readCommand() {
         outputWriter.write("enter command: ");
 
-        String input = inputReader.readLine();
+        var input = inputReader.readLine();
 
         return commandFactory.createFrom(input);
     }
