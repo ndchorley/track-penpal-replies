@@ -9,8 +9,6 @@ import com.xyphias.trackpenpalreplies.foundational.Success;
 import com.xyphias.trackpenpalreplies.infrastructure.io.InputReader;
 import com.xyphias.trackpenpalreplies.infrastructure.io.OutputWriter;
 
-import java.util.stream.Stream;
-
 public class TrackPenpalReplies {
     private final InputReader inputReader;
     private final OutputWriter outputWriter;
@@ -24,26 +22,26 @@ public class TrackPenpalReplies {
         this.commandFactory = commandFactory;
     }
 
-    public void run() {
-        Stream
-                .generate(this::readCommand)
-                .flatMap(result -> {
-                    if (result instanceof Failure<String, Command>(String error)) {
-                        outputWriter.writeLine("");
-                        outputWriter.writeLine(error);
+    public void run() { loop(); }
 
-                        return Stream.generate(this::readCommand);
-                    }
-                    else return Stream.of(result);
-                })
-                .takeWhile(command -> 
-                        !(command instanceof Success<String, Command>(Quit _))
-                )
-                .forEach(result -> {
-                    outputWriter.writeLine("");
+    private void loop() {
+        var result = readCommand();
 
-                    ((Success<?, Command>)result).value().execute();
-                });
+        if (result instanceof Success<String, Command>(Quit _))
+            return;
+
+        if (result instanceof Failure<String, Command>(String error)) {
+            outputWriter.writeLine("");
+            outputWriter.writeLine(error);
+
+            loop();
+        } else {
+            outputWriter.writeLine("");
+
+            ((Success<?, Command>)result).value().execute();
+
+            loop();
+        }
     }
 
     private Result<String, Command> readCommand() {
