@@ -30,7 +30,12 @@ public class TrackPenpalRepliesTests {
 
         app.run();
 
-        assertThat(outputWriter.written).isEqualTo(">> No letters need a reply\n>> ");
+        assertThat(outputWriter.written)
+                .isEqualTo(
+                        """
+                               >> No letters need a reply
+                               >>\s"""
+                );
     }
 
     @Test
