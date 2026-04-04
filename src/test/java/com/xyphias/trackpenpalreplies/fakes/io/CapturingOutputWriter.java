@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CapturingOutputWriter implements OutputWriter {
-    private final List<String> lines = new ArrayList<>();
+    public final List<String> lines = new ArrayList<>();
 
     @Override
     public void writeLine(String line) {
@@ -16,12 +16,5 @@ public class CapturingOutputWriter implements OutputWriter {
     @Override
     public void write(String string) {
         lines.add(string);
-    }
-
-    public String allLines() {
-        return
-                lines
-                        .stream()
-                        .reduce("", (String result, String line) -> result + line);
     }
 }
