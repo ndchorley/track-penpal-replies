@@ -36,8 +36,6 @@ public class TrackPenpalReplies {
 
             loop();
         } else {
-            outputWriter.writeLine("");
-
             ((Success<?, Command>)result).value().execute();
 
             loop();
