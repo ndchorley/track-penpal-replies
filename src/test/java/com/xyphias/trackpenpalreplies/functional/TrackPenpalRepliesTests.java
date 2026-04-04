@@ -30,7 +30,7 @@ public class TrackPenpalRepliesTests {
 
         app.run();
 
-        assertThat(outputWriter.written)
+        assertThat(outputWriter.allLines())
                 .isEqualTo(
                         """
                                >> No letters need a reply
@@ -45,7 +45,7 @@ public class TrackPenpalRepliesTests {
 
         app.run();
 
-        Approvals.verify(outputWriter.written);
+        Approvals.verify(outputWriter.allLines());
     }
     
     @Test
@@ -62,7 +62,7 @@ public class TrackPenpalRepliesTests {
 
         app.run();
 
-        Approvals.verify(outputWriter.written);        
+        Approvals.verify(outputWriter.allLines());
     }
     
     @Test
@@ -79,7 +79,7 @@ public class TrackPenpalRepliesTests {
 
         app.run();
 
-        Approvals.verify(outputWriter.written);
+        Approvals.verify(outputWriter.allLines());
     }
 
     static Stream<String> incorrectCommands() {
@@ -97,7 +97,7 @@ public class TrackPenpalRepliesTests {
         app.run();
 
         Approvals.verify(
-                outputWriter.written,
+                outputWriter.allLines(),
                 Approvals.NAMES.withParameters(commandLetter(incorrectCommand))
         );
     }
