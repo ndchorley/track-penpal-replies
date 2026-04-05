@@ -9,6 +9,7 @@ import com.xyphias.trackpenpalreplies.fakes.storage.InMemoryLetterBox;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class TrackPenpalRepliesTests {
     private final InMemoryInputReader inputReader = new InMemoryInputReader();
@@ -94,24 +96,25 @@ public class TrackPenpalRepliesTests {
                         """);
     }
 
-    static Stream<String> incorrectCommands() {
-        return Stream.of("A John", "R");
+    static Stream<Arguments> incorrectCommandsAndUsageMessages() {
+        return Stream.of(
+                arguments("A John", "usage: A <from>, <received on>\n"),
+                arguments("R", "usage: R <from>\n")
+        );
     }
 
     @ParameterizedTest
-    @MethodSource("incorrectCommands")
+    @MethodSource("incorrectCommandsAndUsageMessages")
     public void it_displays_a_message_if_a_command_is_used_incorrectly(
-            String incorrectCommand
+            String incorrectCommand, String expectedUsageMessage
     ) {
         List<String> commands = List.of(incorrectCommand, "Q");
         inputReader.withInputs(commands);
 
         app.run();
 
-        Approvals.verify(
-                allOutput(outputWriter),
-                Approvals.NAMES.withParameters(commandLetter(incorrectCommand))
-        );
+        assertThat(lastOutputExceptThePrompt(outputWriter))
+                .isEqualTo(expectedUsageMessage);
     }
 
     private String allOutput(CapturingOutputWriter writer) {
