@@ -22,10 +22,10 @@ public class TrackPenpalReplies {
         this.commandFactory = commandFactory;
     }
 
-    public void run() { loop(); }
+    public void run() { loop(CommandState.OK); }
 
-    private void loop() {
-        var result = readCommand();
+    private void loop(CommandState state) {
+        var result = readCommand(state);
 
         if (result instanceof Success<String, Command>(Quit _))
             return;
@@ -33,19 +33,31 @@ public class TrackPenpalReplies {
         if (result instanceof Failure<String, Command>(String error)) {
             outputWriter.writeLine(error);
 
-            loop();
+            loop(CommandState.ERROR);
         } else {
             ((Success<?, Command>)result).value().execute();
 
-            loop();
+            loop(CommandState.OK);
         }
     }
 
-    private Result<String, Command> readCommand() {
-        outputWriter.write("\033[34m⮞\033[0m ");
+    private Result<String, Command> readCommand(CommandState state) {
+        outputWriter.write(promptFor(state));
 
         var input = inputReader.readLine();
 
         return commandFactory.createFrom(input);
     }
+
+    private String promptFor(CommandState state) {
+        return switch (state) {
+            case OK -> "\033[34m⮞\033[0m ";
+            case ERROR -> "\033[31m⮞\033[0m ";
+        };
+    }
+}
+
+enum CommandState {
+    OK,
+    ERROR
 }

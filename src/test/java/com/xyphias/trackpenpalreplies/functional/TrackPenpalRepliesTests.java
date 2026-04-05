@@ -112,8 +112,8 @@ public class TrackPenpalRepliesTests {
 
         app.run();
 
-        assertThat(lastOutputExceptThePrompt(outputWriter))
-                .isEqualTo(expectedUsageMessage);
+        assertThat(allOutput(outputWriter))
+                .endsWith(expectedUsageMessage + "\033[31m⮞\033[0m ");
     }
 
     private String allOutput(CapturingOutputWriter writer) {
