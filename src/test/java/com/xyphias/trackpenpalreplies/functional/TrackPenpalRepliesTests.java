@@ -112,28 +112,27 @@ public class TrackPenpalRepliesTests {
     }
 
     private String allOutput(CapturingOutputWriter writer) {
-        return
-                writer
-                        .lines
-                        .stream()
-                        .reduce("", (String result, String line) -> result + line);
+        return writer
+                .lines
+                .stream()
+                .reduce("", (String result, String line) -> result + line);
     }
 
     private String lastOutputExceptThePrompt(CapturingOutputWriter writer) {
         var promptIndices =
                 IntStream
-                        .range(0, writer.lines.size())
-                        .boxed()
-                        .filter(index -> writer.lines.get(index).equals(">> "))
-                        .toList();
+                    .range(0, writer.lines.size())
+                    .boxed()
+                    .filter(index -> writer.lines.get(index).equals(">> "))
+                    .toList();
 
         var penultimatePromptIndex = promptIndices.get(promptIndices.size() - 2);
 
-        var outputLines =
-                writer
-                        .lines
-                        .subList(penultimatePromptIndex + 1, writer.lines.size() - 1);
-        return outputLines.stream().reduce("", (String result, String line) -> result + line);
+        return writer
+                .lines
+                .subList(penultimatePromptIndex + 1, promptIndices.getLast())
+                .stream()
+                .reduce("", (String result, String line) -> result + line);
     }
 
     private static String commandLetter(String incorrectCommand) {
