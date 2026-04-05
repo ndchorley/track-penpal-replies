@@ -11,7 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,8 +36,8 @@ public class TrackPenpalRepliesTests {
         assertThat(allOutput(outputWriter))
                 .isEqualTo(
                         """
-                               >> No letters need a reply
-                               >>\s"""
+                                >> No letters need a reply
+                                >>\s"""
                 );
     }
 
@@ -47,10 +50,10 @@ public class TrackPenpalRepliesTests {
 
         Approvals.verify(allOutput(outputWriter));
     }
-    
+
     @Test
     public void it_displays_older_letters_before_newer_ones() {
-        List<String> commands = 
+        List<String> commands =
                 List.of(
                         "A Marta, 11/08/2024",
                         "A Amandine, 04/07/2024",
@@ -62,9 +65,14 @@ public class TrackPenpalRepliesTests {
 
         app.run();
 
-        Approvals.verify(allOutput(outputWriter));
+        assertThat(lastOutputExceptThePrompt(outputWriter))
+                .isEqualTo("""
+                        Eric, 01 June 2024
+                        Amandine, 04 July 2024
+                        Marta, 11 August 2024
+                        """);
     }
-    
+
     @Test
     public void a_letter_can_be_removed() {
         List<String> commands =
@@ -108,6 +116,23 @@ public class TrackPenpalRepliesTests {
                         .lines
                         .stream()
                         .reduce("", (String result, String line) -> result + line);
+    }
+
+    private String lastOutputExceptThePrompt(CapturingOutputWriter writer) {
+        var promptIndices =
+                IntStream
+                        .range(0, writer.lines.size())
+                        .boxed()
+                        .filter(index -> writer.lines.get(index).equals(">> "))
+                        .toList();
+
+        var penultimatePromptIndex = promptIndices.get(promptIndices.size() - 2);
+
+        var outputLines =
+                writer
+                        .lines
+                        .subList(penultimatePromptIndex + 1, writer.lines.size() - 1);
+        return outputLines.stream().reduce("", (String result, String line) -> result + line);
     }
 
     private static String commandLetter(String incorrectCommand) {
