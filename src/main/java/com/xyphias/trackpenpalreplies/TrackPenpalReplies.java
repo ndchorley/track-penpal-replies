@@ -42,7 +42,7 @@ public class TrackPenpalReplies {
     }
 
     private Result<String, Command> readCommand() {
-        outputWriter.write(">> ");
+        outputWriter.write("\033[34m⮞\033[0m ");
 
         var input = inputReader.readLine();
 

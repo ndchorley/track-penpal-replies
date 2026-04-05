@@ -36,8 +36,8 @@ public class TrackPenpalRepliesTests {
         assertThat(allOutput(outputWriter))
                 .isEqualTo(
                         """
-                                >> No letters need a reply
-                                >>\s"""
+                                \033[34m⮞\033[0m No letters need a reply
+                                \033[34m⮞\033[0m\s"""
                 );
     }
 
@@ -129,7 +129,7 @@ public class TrackPenpalRepliesTests {
                 IntStream
                     .range(0, writer.lines.size())
                     .boxed()
-                    .filter(index -> writer.lines.get(index).equals(">> "))
+                    .filter(index -> writer.lines.get(index).equals("\033[34m⮞\033[0m "))
                     .toList();
 
         var penultimatePromptIndex = promptIndices.get(promptIndices.size() - 2);
