@@ -88,7 +88,10 @@ public class TrackPenpalRepliesTests {
 
         app.run();
 
-        Approvals.verify(allOutput(outputWriter));
+        assertThat(lastOutputExceptThePrompt(outputWriter))
+                .isEqualTo("""
+                        John, 07 August 2024
+                        """);
     }
 
     static Stream<String> incorrectCommands() {
