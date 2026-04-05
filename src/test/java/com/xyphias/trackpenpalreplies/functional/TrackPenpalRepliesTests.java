@@ -6,7 +6,6 @@ import com.xyphias.trackpenpalreplies.commands.CommandFactory;
 import com.xyphias.trackpenpalreplies.fakes.io.CapturingOutputWriter;
 import com.xyphias.trackpenpalreplies.fakes.io.InMemoryInputReader;
 import com.xyphias.trackpenpalreplies.fakes.storage.InMemoryLetterBox;
-import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -139,9 +138,5 @@ public class TrackPenpalRepliesTests {
                 .subList(penultimatePromptIndex + 1, promptIndices.getLast())
                 .stream()
                 .reduce("", (String result, String line) -> result + line);
-    }
-
-    private static String commandLetter(String incorrectCommand) {
-        return incorrectCommand.substring(0, 1);
     }
 }
