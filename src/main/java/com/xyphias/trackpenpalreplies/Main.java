@@ -42,7 +42,7 @@ private static void setUpLoggingToFile() {
     
     try {
         Handler fileHandler = 
-                new FileHandler("%h/track-penpal-replies.log", true);
+                new FileHandler("%t/track-penpal-replies.log", true);
         fileHandler.setFormatter(new SimpleFormatter());
         
         rootLogger.addHandler(fileHandler);
