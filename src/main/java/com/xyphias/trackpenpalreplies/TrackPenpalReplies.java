@@ -51,8 +51,8 @@ public class TrackPenpalReplies {
 
     private String promptFor(CommandState state) {
         return switch (state) {
-            case OK -> "\033[34m⮞\033[0m ";
-            case ERROR -> "\033[31m⮞\033[0m ";
+            case OK -> "\033[34m⮞ \033[0m";
+            case ERROR -> "\033[31m⮞ \033[0m";
         };
     }
 }
