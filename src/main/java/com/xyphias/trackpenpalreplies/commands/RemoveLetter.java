@@ -5,7 +5,7 @@ import com.xyphias.trackpenpalreplies.Penpal;
 
 public class RemoveLetter implements Command {
     private final LetterBox letterBox;
-    private final Penpal sender;
+    public final Penpal sender;
 
     public RemoveLetter(LetterBox letterBox, Penpal sender) {
         this.letterBox = letterBox;

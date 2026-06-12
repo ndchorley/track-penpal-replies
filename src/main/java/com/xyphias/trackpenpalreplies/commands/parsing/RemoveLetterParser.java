@@ -17,7 +17,7 @@ public class RemoveLetterParser extends CommandParser {
 
     @Override
     protected Matcher matcherFor(String input) {
-        return Pattern.compile("R ([\\w]+)").matcher(input);
+        return Pattern.compile("R ([\\w ]+)").matcher(input);
     }
 
     @Override
